@@ -10,9 +10,9 @@ planeId = p.loadURDF("plane.urdf")
 robotId = p.loadURDF("body.urdf")
 p.loadSDF("world.sdf")
 
-for i in range(1000):
+for i in range(4000):
     p.stepSimulation()
-    time.sleep((1/600))
+    time.sleep((1/200))
     print(i)
 
 p.disconnect() 
