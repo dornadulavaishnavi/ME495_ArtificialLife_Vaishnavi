@@ -24,4 +24,6 @@ for i in range(simlength):
     # print(i)
 
 print(backLegSensorValues)
+numpy.save("data/backLegSensordata.npy", backLegSensorValues)
+
 p.disconnect() 
