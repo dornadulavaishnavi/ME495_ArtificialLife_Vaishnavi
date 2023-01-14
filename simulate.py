@@ -22,9 +22,8 @@ frontLegSensorValues = numpy.zeros(simlength)
 
 import matplotlib.pylab as plt
 targetAngles = numpy.linspace(0, 2*numpy.pi, simlength)
-targetAngles = numpy.sin(targetAngles)
-numpy.save("data/targetAngles.npy", targetAngles)
-# plt.plot(targetAngles, numpy.sin(targetAngles))
+targetAngles = numpy.sin(targetAngles)*(numpy.pi/4)
+# numpy.save("data/targetAngles.npy", targetAngles)
 
 for i in range(simlength):
     p.stepSimulation()
