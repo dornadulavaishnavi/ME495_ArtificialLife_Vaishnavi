@@ -5,6 +5,7 @@ import numpy
 import time
 import math
 import random
+import matplotlib.pylab as plt
 
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -20,10 +21,15 @@ simlength = 1000
 backLegSensorValues = numpy.zeros(simlength)
 frontLegSensorValues = numpy.zeros(simlength)
 
-import matplotlib.pylab as plt
+amplitude = numpy.pi/4
+frequency = 1
+phaseOffset = 0
+
 targetAngles = numpy.linspace(0, 2*numpy.pi, simlength)
-targetAngles = numpy.sin(targetAngles)*(numpy.pi/4)
-# numpy.save("data/targetAngles.npy", targetAngles)
+targetAngles = amplitude * numpy.sin(frequency*targetAngles + phaseOffset) # numpy.sin(targetAngles)*(numpy.pi/4)
+numpy.save("data/targetAngles.npy", targetAngles)
+
+exit()
 
 for i in range(simlength):
     p.stepSimulation()
