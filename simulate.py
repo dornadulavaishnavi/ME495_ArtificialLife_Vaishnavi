@@ -22,14 +22,13 @@ backLegSensorValues = numpy.zeros(simlength)
 frontLegSensorValues = numpy.zeros(simlength)
 
 amplitude = numpy.pi/4
-frequency = 1
+frequency = 10
 phaseOffset = 0
 
 targetAngles = numpy.linspace(0, 2*numpy.pi, simlength)
 targetAngles = amplitude * numpy.sin(frequency*targetAngles + phaseOffset) # numpy.sin(targetAngles)*(numpy.pi/4)
-numpy.save("data/targetAngles.npy", targetAngles)
+# numpy.save("data/targetAngles.npy", targetAngles)
 
-exit()
 
 for i in range(simlength):
     p.stepSimulation()
