@@ -23,10 +23,10 @@ frontLegSensorValues = numpy.zeros(simlength)
 
 amplitude_backLeg = numpy.pi/4
 frequency_backLeg = 10
-phaseOffset_backLeg = 0
-amplitude_frontLeg = numpy.pi/4
-frequency_frontLeg = 10
-phaseOffset_frontLeg = 0
+phaseOffset_backLeg = -numpy.pi/8
+amplitude_frontLeg = numpy.pi/2
+frequency_frontLeg = 20
+phaseOffset_frontLeg = numpy.pi/2
 
 targetAngles = numpy.linspace(0, 2*numpy.pi, simlength)
 targetAngles_backLeg = amplitude_backLeg * numpy.sin(frequency_backLeg*targetAngles + phaseOffset_backLeg) # numpy.sin(targetAngles)*(numpy.pi/4)
