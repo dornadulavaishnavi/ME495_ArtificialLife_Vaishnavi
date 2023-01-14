@@ -20,6 +20,12 @@ simlength = 1000
 backLegSensorValues = numpy.zeros(simlength)
 frontLegSensorValues = numpy.zeros(simlength)
 
+import matplotlib.pylab as plt
+targetAngles = numpy.linspace(0, 2*numpy.pi, simlength)
+targetAngles = numpy.sin(targetAngles)
+numpy.save("data/targetAngles.npy", targetAngles)
+# plt.plot(targetAngles, numpy.sin(targetAngles))
+
 for i in range(simlength):
     p.stepSimulation()
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
