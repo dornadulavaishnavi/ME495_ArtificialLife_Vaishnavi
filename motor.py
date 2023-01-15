@@ -1,3 +1,4 @@
+import pybullet as p
 import numpy
 import pyrosim.pyrosim as pyrosim
 import constants as c
@@ -18,5 +19,5 @@ class MOTOR:
         self.motorValues = numpy.linspace(0, 2*numpy.pi, c.simlength)
         self.motorValues = self.amplitude * numpy.sin(self.frequency*self.motorValues + self.offset) # numpy.sin(targetAngles)*(numpy.pi/4)
         
-    def Set_Value(self):
-        pass
+    def Set_Value(self, robot, timeStep):
+        pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = self.jointName, controlMode = p.POSITION_CONTROL, targetPosition = self.motorValues[timeStep], maxForce = c.maximum_force)

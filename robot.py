@@ -30,7 +30,7 @@ class ROBOT:
             self.motors[jointName] = MOTOR(jointName)
         return
 
-    def Act(self):
+    def Act(self, dt):
         for joint in self.motors:
-            self.motors[joint].Set_Value()
+            self.motors[joint].Set_Value(self.robotId, dt)
         return

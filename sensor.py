@@ -14,5 +14,5 @@ class SENSOR:
 
     def Get_Value(self, timeStep):
         self.values[timeStep] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)     
-        if timeStep >= (c.simlength-1):   
-            print(self.values)
+        # if timeStep >= (c.simlength-1):   
+        #     print(self.values)

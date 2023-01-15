@@ -23,7 +23,7 @@ class SIMULATION:
         for dt in range(c.simlength):
             p.stepSimulation()
             self.robot.Sense(dt)
-            self.robot.Act()
+            self.robot.Act(dt)
             time.sleep(c.simSleepTime)
             # print(dt)
     
