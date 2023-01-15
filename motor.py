@@ -11,5 +11,8 @@ class MOTOR:
 
     def Prepare_To_Act(self):
         self.values = numpy.zeros(c.simlength)
+        self.amplitude = c.amplitude_backLeg
+        self.frequency = c.frequency_backLeg
+        self.offset = c.phaseOffset_backLeg
         # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = b'Torso_BackLeg', controlMode = p.POSITION_CONTROL, targetPosition = targetAngles_backLeg[i], maxForce = c.maximum_force)
         # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = b'Torso_FrontLeg', controlMode = p.POSITION_CONTROL, targetPosition = targetAngles_frontLeg[i], maxForce = c.maximum_force)
