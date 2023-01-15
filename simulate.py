@@ -42,4 +42,6 @@
 
 # p.disconnect() 
 
-pass
+from simulation import SIMULATION
+
+simulation = SIMULATION()
