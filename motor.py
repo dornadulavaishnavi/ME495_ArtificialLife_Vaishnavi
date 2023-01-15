@@ -14,5 +14,9 @@ class MOTOR:
         self.amplitude = c.amplitude_backLeg
         self.frequency = c.frequency_backLeg
         self.offset = c.phaseOffset_backLeg
-        # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = b'Torso_BackLeg', controlMode = p.POSITION_CONTROL, targetPosition = targetAngles_backLeg[i], maxForce = c.maximum_force)
-        # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = b'Torso_FrontLeg', controlMode = p.POSITION_CONTROL, targetPosition = targetAngles_frontLeg[i], maxForce = c.maximum_force)
+        
+        self.motorValues = numpy.linspace(0, 2*numpy.pi, c.simlength)
+        self.motorValues = self.amplitude * numpy.sin(self.frequency*self.motorValues + self.offset) # numpy.sin(targetAngles)*(numpy.pi/4)
+        
+    def Set_Value(self):
+        pass
