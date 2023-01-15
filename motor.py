@@ -17,7 +17,10 @@ class MOTOR:
         self.offset = c.phaseOffset_backLeg
         
         self.motorValues = numpy.linspace(0, 2*numpy.pi, c.simlength)
-        self.motorValues = self.amplitude * numpy.sin(self.frequency*self.motorValues + self.offset) # numpy.sin(targetAngles)*(numpy.pi/4)
+        self.motorValues = self.amplitude * numpy.sin(self.frequency*self.motorValues + self.offset)
+        if self.jointName == b'Torso_BackLeg':
+            print("half oscillating")
+            self.motorValues = self.amplitude * numpy.sin(self.frequency/2*self.motorValues + self.offset)
         
     def Set_Value(self, robot, timeStep):
         pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = self.jointName, controlMode = p.POSITION_CONTROL, targetPosition = self.motorValues[timeStep], maxForce = c.maximum_force)
