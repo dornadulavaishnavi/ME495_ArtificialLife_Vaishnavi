@@ -1,5 +1,6 @@
 import pybullet as p
 import pyrosim.pyrosim as pyrosim
+from sensor import SENSOR
 
 class ROBOT:
 
@@ -14,4 +15,4 @@ class ROBOT:
     def Prepare_To_Sense(self):
         self.sensors = {}
         for linkName in pyrosim.linkNamesToIndices:
-            print(linkName)
+            self.sensors[linkName] = SENSOR(linkName)
