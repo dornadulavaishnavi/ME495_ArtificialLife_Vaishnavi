@@ -1,6 +1,7 @@
 import pybullet as p
 import pyrosim.pyrosim as pyrosim
 from sensor import SENSOR
+from motor import MOTOR
 
 class ROBOT:
 
@@ -25,5 +26,5 @@ class ROBOT:
     def Prepare_To_Act(self):
         self.motors = {}
         for jointName in pyrosim.jointNamesToIndices:
-            self.sensors[jointName] = MOTOR(jointName)
+            self.motors[jointName] = MOTOR(jointName)
         return

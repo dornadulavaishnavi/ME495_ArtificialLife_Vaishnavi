@@ -7,6 +7,9 @@ class SENSOR:
     def __init__(self, linkName):
         
         self.linkName = linkName
+        self.Prepare_To_Sense()
+
+    def Prepare_To_Sense(self):
         self.values = numpy.zeros(c.simlength)
 
     def Get_Value(self, timeStep):
