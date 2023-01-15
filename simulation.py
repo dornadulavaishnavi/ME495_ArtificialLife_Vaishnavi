@@ -3,6 +3,8 @@ import pybullet_data
 import pyrosim.pyrosim as pyrosim
 from world import WORLD
 from robot import ROBOT
+import constants as c
+import time
 
 class SIMULATION:
 
@@ -17,3 +19,13 @@ class SIMULATION:
         self.robot = ROBOT()
 
         pyrosim.Prepare_To_Simulate(self.robot.robotId)
+
+    def Run(self):
+        for i in range(c.simlength):
+            p.stepSimulation()
+            # backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
+            # frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
+            # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = b'Torso_BackLeg', controlMode = p.POSITION_CONTROL, targetPosition = targetAngles_backLeg[i], maxForce = c.maximum_force)
+            # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = b'Torso_FrontLeg', controlMode = p.POSITION_CONTROL, targetPosition = targetAngles_frontLeg[i], maxForce = c.maximum_force)
+            time.sleep(c.simSleepTime)
+            print(i)
