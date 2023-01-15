@@ -1,5 +1,5 @@
 class MOTOR:
 
-    def __init__(self):
+    def __init__(self, jointName):
 
-        pass
+        self.jointName = jointName
