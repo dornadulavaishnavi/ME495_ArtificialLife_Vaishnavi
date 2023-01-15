@@ -18,7 +18,6 @@ class SIMULATION:
         self.world = WORLD()
         self.robot = ROBOT()
 
-        pyrosim.Prepare_To_Simulate(self.robot.robotId)
 
     def Run(self):
         for i in range(c.simlength):
@@ -28,7 +27,7 @@ class SIMULATION:
             # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = b'Torso_BackLeg', controlMode = p.POSITION_CONTROL, targetPosition = targetAngles_backLeg[i], maxForce = c.maximum_force)
             # pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = b'Torso_FrontLeg', controlMode = p.POSITION_CONTROL, targetPosition = targetAngles_frontLeg[i], maxForce = c.maximum_force)
             time.sleep(c.simSleepTime)
-            print(i)
+            # print(i)
     
     def __del__(self):
         p.disconnect()
