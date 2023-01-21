@@ -22,8 +22,8 @@ class MOTOR:
             print("half oscillating")
             self.motorValues = self.amplitude * numpy.sin(self.frequency/2*self.motorValues + self.offset)
         
-    def Set_Value(self, robot, timeStep):
-        pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = self.jointName, controlMode = p.POSITION_CONTROL, targetPosition = self.motorValues[timeStep], maxForce = c.maximum_force)
+    def Set_Value(self, robot, desiredAngle):
+        pyrosim.Set_Motor_For_Joint(bodyIndex = robot, jointName = self.jointName, controlMode = p.POSITION_CONTROL, targetPosition = self.motorValues[desiredAngle], maxForce = c.maximum_force)
 
     def Save_Values(self):
         fileLoc = "data/" + str(self.linkName) + "MotorValues.npy"
