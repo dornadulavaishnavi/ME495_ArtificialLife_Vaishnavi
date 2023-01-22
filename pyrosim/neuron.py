@@ -75,18 +75,22 @@ class NEURON:
         # print(synapses)
         # print("Currently Updating neuron")
         # print(self.Get_Name)
+        print(self.Get_Value())
         for synapse in synapses:
             # print(synapse)
             if synapse[1] == self.Get_Name():
-                self.Allow_Presynaptic_Neuron_To_Influence_Me(synapses[synapse].Get_Weight, neurons[synapse[0]].Get_Value())
+                self.Allow_Presynaptic_Neuron_To_Influence_Me(synapses[synapse].Get_Weight(), neurons[synapse[0]].Get_Value())
                 # print(synapse[0])
                 # print(synapse[1])
-        # exit()
+        print(self.Get_Value())
+        exit()
 
     def Allow_Presynaptic_Neuron_To_Influence_Me(self, weight, value):
-        print(weight)
-        print(value)
-        exit()
+        # print(weight)
+        # print(value)
+        # exit()
+        running = value * weight
+        self.Add_To_Value(running)
 
 # -------------------------- Private methods -------------------------
 
