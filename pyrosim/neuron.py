@@ -73,15 +73,18 @@ class NEURON:
         self.Set_Value(0.0)
         # print(neurons)
         # print(synapses)
+        print("Currently Updating neuron")
+        print(self.Get_Name)
         for synapse in synapses:
             # print(synapse)
             if synapse[1] == self.Get_Name():
-                print()
+                print(synapse[0])
+                print(synapse[1])
         # exit()
 
     def Allow_Presynaptic_Neuron_To_Influence_Me(self):
         pass 
-        
+
 # -------------------------- Private methods -------------------------
 
     def Determine_Name(self,line):
