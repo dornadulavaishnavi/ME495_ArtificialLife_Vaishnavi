@@ -64,8 +64,8 @@ def Generate_Brain():
 
     for sensor in range(3):
         for motor in range(3,5):
-            pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor , weight = 1 )
-            
+            pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor , weight = random.randint(-1,1) )
+
     pyrosim.End()
 
 # Create_World()
