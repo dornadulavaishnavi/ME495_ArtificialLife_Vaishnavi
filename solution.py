@@ -8,5 +8,7 @@ class SOLUTION:
             for column in range(2):
                 self.weight[row][column] = np.random.rand()
 
-        print(self.weight)
-        exit()
+        # print(self.weight)
+        self.weight = self.weight*2-1
+        # print(self.weight)
+        # exit()
