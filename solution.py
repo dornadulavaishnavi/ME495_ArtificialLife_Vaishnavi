@@ -1,5 +1,6 @@
 import numpy as np 
 import pyrosim.pyrosim as pyrosim
+import os
 
 class SOLUTION: 
 
@@ -17,6 +18,7 @@ class SOLUTION:
     def Evaluate(self):
         self.Create_Body()
         self.Create_Brain()
+        os.system("python simulate.py")
 
     def Create_World(self):
         length = 1
