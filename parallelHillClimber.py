@@ -1,10 +1,21 @@
 import copy
+import os
 from solution import SOLUTION
 import constants as c
 
 class PARALLEL_HILL_CLIMBER: 
 
     def __init__(self):
+        for pop in range(c.populationSize):
+            try:
+                os.system("del brain" + str(pop) + ".nndf")
+            except:
+                pass
+            try:
+                os.system("del fitness" + str(pop) + ".txt")
+            except:
+                pass
+
         self.parents = {}
         self.nextAvailableID = 0
         for pop in range(c.populationSize):
@@ -24,18 +35,22 @@ class PARALLEL_HILL_CLIMBER:
             self.Evolve_For_One_Generation()
 
     def Evolve_For_One_Generation(self):
-        # self.Spawn()
+        self.Spawn()
         # self.Mutate()
         # self.child.Evaluate("DIRECT")
-        # # exit()
+        # exit()
         # self.Select()
         # self.Print()
-        pass
-        
+
     def Spawn(self):
-        self.child = copy.deepcopy(self.parent)
-        self.child.Set_ID(self.nextAvailableID)
-        self.nextAvailableID += 1
+        self.children = {}
+        for parent in self.parents:
+            self.children[parent] = copy.deepcopy(self.parents[parent])
+            self.children[parent].Set_ID(self.nextAvailableID)
+            self.nextAvailableID += 1
+
+        print(self.children)
+        exit()
 
     def Mutate(self):
         self.child.Mutate()
