@@ -38,4 +38,4 @@ class HILL_CLIMBER:
             self.parent = self.child
 
     def Print(self):
-        print(self.parent.fitness + self.child.fitness)
+        print("[" + str(self.parent.fitness) + ", " + str(self.child.fitness) + "]")
