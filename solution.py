@@ -47,7 +47,7 @@ class SOLUTION:
         print(self.fitness)
         f.close()
 
-        os.system("del fitness" + str(self.myID) + ".txt")
+        os.system("del " + fitnessFileName)
 
     def Create_World(self):
         # fitnessFileName = "fitness.txt"
