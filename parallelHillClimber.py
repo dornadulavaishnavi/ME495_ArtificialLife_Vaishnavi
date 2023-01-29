@@ -40,10 +40,9 @@ class PARALLEL_HILL_CLIMBER:
         self.Mutate()
         # self.child.Evaluate("DIRECT")
         self.Evaluate(self.children)
-        exit()
         # exit()
         # self.Select()
-        # self.Print()
+        self.Print()
 
     def Spawn(self):
         self.children = {}
@@ -75,10 +74,11 @@ class PARALLEL_HILL_CLIMBER:
 
     def Evaluate(self, solutions):
         for solution in solutions:
-            solutions[solution].Start_Simulation("GUI")
+            solutions[solution].Start_Simulation("DIRECT")
 
         for solution in solutions:
             solutions[solution].Wait_For_Simulation_To_End()
 
     def Print(self):
-        print("[" + str(self.parent.fitness) + ", " + str(self.child.fitness) + "]")
+        for key in self.parents:
+            print("\n[" + str(self.parents[key].fitness) + ", " + str(self.children[key].fitness) + "]\n")
