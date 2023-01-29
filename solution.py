@@ -20,7 +20,7 @@ class SOLUTION:
     def Evaluate(self, directOrGUI):
         self.Create_Body()
         self.Create_Brain()
-        runString = "start /B python simulate.py " + directOrGUI
+        runString = "start /B python simulate.py " + directOrGUI + " " + str(self.myID)
         os.system(runString)
         f = open("fitness.txt", "r")
         self.fitness = float(f.read())
