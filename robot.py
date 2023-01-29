@@ -65,6 +65,7 @@ class ROBOT:
 
         f = (open(tmpString, "w"))
         f.write(str(xCoordinateOfLinkZero))
-        os.system("rename " + tmpString + " " + fitnessString)
+        # print("rename " + tmpString + " " + fitnessString)
         f.close()
+        os.system("rename " + tmpString + " " + fitnessString)
         exit()
