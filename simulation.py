@@ -10,6 +10,7 @@ class SIMULATION:
 
     def __init__(self, directOrGUI, solutionID): 
         self.directOrGUI = directOrGUI
+        self.solutionID = solutionID
         if self.directOrGUI == "DIRECT":       
             self.physicsClient = p.connect(p.DIRECT)
         else:

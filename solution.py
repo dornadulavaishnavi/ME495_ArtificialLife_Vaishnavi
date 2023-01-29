@@ -22,8 +22,13 @@ class SOLUTION:
         self.Create_Brain()
         runString = "start /B python simulate.py " + directOrGUI + " " + str(self.myID)
         os.system(runString)
-        f = open("fitness.txt", "r")
+
+        fitnessFileName = "fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+        f = open(fitnessFileName, "r")
         self.fitness = float(f.read())
+        print(self.fitness)
         f.close()
 
     def Create_World(self):
