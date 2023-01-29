@@ -41,7 +41,7 @@ class PARALLEL_HILL_CLIMBER:
         # self.child.Evaluate("DIRECT")
         self.Evaluate(self.children)
         # exit()
-        # self.Select()
+        self.Select()
         self.Print()
 
     def Spawn(self):
@@ -65,8 +65,9 @@ class PARALLEL_HILL_CLIMBER:
         # print(self.parent.fitness)
         # print(self.child.fitness)
         # exit()
-        if (self.parent.fitness > self.child.fitness):
-            self.parent = self.child
+        for key in self.parents:
+            if (self.parents[key].fitness > self.children[key].fitness):
+                self.parents[key] = self.children[key]
 
     def Show_Best(self):
         # self.parent.Evaluate("GUI")
