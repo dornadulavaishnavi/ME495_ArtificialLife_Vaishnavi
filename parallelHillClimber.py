@@ -17,6 +17,9 @@ class PARALLEL_HILL_CLIMBER:
         for parent in self.parents:
             self.parents[parent].Start_Simulation("GUI")
 
+        for parent in self.parents:
+            self.parents[parent].Wait_For_Simulation_To_End()
+            
         # for currentGeneration in range(c.numberOfGenerations):
         #     self.Evolve_For_One_Generation()
         pass
