@@ -32,6 +32,23 @@ class SOLUTION:
         print(self.fitness)
         f.close()
 
+    def Start_Simulation(self, directOrGUI):
+        self.Create_Body()
+        self.Create_Brain()
+        runString = "start /B python simulate.py " + directOrGUI + " " + str(self.myID)
+        os.system(runString)
+
+    def Wait_For_Simulation_To_End(self):
+        fitnessFileName = "fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+        f = open(fitnessFileName, "r")
+        self.fitness = float(f.read())
+        # print(self.fitness)
+        f.close()
+
+        os.system("del fitness" + str(self.myID) + ".txt")
+
     def Create_World(self):
         # fitnessFileName = "fitness.txt"
         # while not os.path.exists(fitnessFileName):
