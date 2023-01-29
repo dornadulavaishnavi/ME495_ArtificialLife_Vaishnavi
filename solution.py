@@ -19,16 +19,16 @@ class SOLUTION:
     def Evaluate(self, directOrGUI):
         self.Create_Body()
         self.Create_Brain()
-        runString = "python simulate.py " + directOrGUI + " &"
+        runString = "start /B python simulate.py " + directOrGUI
         os.system(runString)
         f = open("fitness.txt", "r")
         self.fitness = float(f.read())
         f.close()
 
     def Create_World(self):
-        fitnessFileName = "fitness.txt"
-        while not os.path.exists(fitnessFileName):
-            time.sleep(0.01)
+        # fitnessFileName = "fitness.txt"
+        # while not os.path.exists(fitnessFileName):
+        #     time.sleep(0.01)
 
         length = 1
         width = 1
@@ -44,9 +44,9 @@ class SOLUTION:
         pyrosim.End()
 
     def Create_Body(self):
-        fitnessFileName = "fitness.txt"
-        while not os.path.exists(fitnessFileName):
-            time.sleep(0.01)
+        # fitnessFileName = "fitness.txt"
+        # while not os.path.exists(fitnessFileName):
+        #     time.sleep(0.01)
 
         self.Create_World()
         
@@ -60,10 +60,10 @@ class SOLUTION:
         pyrosim.End()
 
     def Create_Brain(self):
-        fitnessFileName = "fitness.txt"
-        while not os.path.exists(fitnessFileName):
-            time.sleep(0.01)
-            
+        # fitnessFileName = "fitness.txt"
+        # while not os.path.exists(fitnessFileName):
+        #     time.sleep(0.01)
+
         pyrosim.Start_NeuralNetwork("brain.nndf")
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
         pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
