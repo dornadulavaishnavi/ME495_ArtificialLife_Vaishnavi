@@ -44,7 +44,7 @@ class SOLUTION:
             time.sleep(0.01)
         f = open(fitnessFileName, "r")
         self.fitness = float(f.read())
-        print(self.fitness)
+        # print(self.fitness)
         f.close()
 
         os.system("del " + fitnessFileName)
