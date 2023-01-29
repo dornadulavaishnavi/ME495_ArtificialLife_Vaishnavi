@@ -5,11 +5,15 @@ import constants as c
 class PARALLEL_HILL_CLIMBER: 
 
     def __init__(self):
-        # self.parent = SOLUTION()
-        pass
+        self.parents = {}
+        for pop in range(c.populationSize):
+            self.parents[pop] = SOLUTION()
+
+        # print(self.parents)
 
     def Evolve(self):
-        # self.parent.Evaluate("GUI")
+        for parent in self.parents:
+            self.parents[parent].Evaluate("GUI")
 
         # for currentGeneration in range(c.numberOfGenerations):
         #     self.Evolve_For_One_Generation()
