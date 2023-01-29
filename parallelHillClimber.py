@@ -70,8 +70,7 @@ class PARALLEL_HILL_CLIMBER:
                 self.parents[key] = self.children[key]
 
     def Show_Best(self):
-        # self.parent.Evaluate("GUI")
-        pass
+        self.parents[c.numberOfGenerations-1].Start_Simulation("GUI")
 
     def Evaluate(self, solutions):
         for solution in solutions:

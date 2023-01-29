@@ -12,5 +12,5 @@ phaseOffset_frontLeg = numpy.pi/2
 
 maximum_force = 50
 
-numberOfGenerations = 2
-populationSize = 2
+numberOfGenerations = 10
+populationSize = 10
