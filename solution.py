@@ -16,10 +16,11 @@ class SOLUTION:
         # print(self.weight)
         # exit()
     
-    def Evaluate(self):
+    def Evaluate(self, directOrGUI):
         self.Create_Body()
         self.Create_Brain()
-        os.system("python simulate.py DIRECT")
+        runString = "python simulate.py " + directOrGUI
+        os.system(runString)
         f = open("fitness.txt", "r")
         self.fitness = float(f.read())
         f.close()
