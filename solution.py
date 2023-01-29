@@ -19,7 +19,7 @@ class SOLUTION:
     def Evaluate(self):
         self.Create_Body()
         self.Create_Brain()
-        os.system("python simulate.py")
+        os.system("python simulate.py DIRECT")
         f = open("fitness.txt", "r")
         self.fitness = float(f.read())
         f.close()
