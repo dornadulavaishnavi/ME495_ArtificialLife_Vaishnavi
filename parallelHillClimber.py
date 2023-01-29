@@ -31,8 +31,7 @@ class PARALLEL_HILL_CLIMBER:
         # for parent in self.parents:
         #     self.parents[parent].Wait_For_Simulation_To_End()
         self.Evaluate(self.parents)
-        exit()
-        
+
         for currentGeneration in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation()
 
@@ -40,6 +39,8 @@ class PARALLEL_HILL_CLIMBER:
         self.Spawn()
         self.Mutate()
         # self.child.Evaluate("DIRECT")
+        self.Evaluate(self.children)
+        exit()
         # exit()
         # self.Select()
         # self.Print()
