@@ -5,7 +5,8 @@ import random
 
 class SOLUTION: 
 
-    def __init__(self):
+    def __init__(self, ID):
+        self.myID = ID
         self.weight = np.zeros((3,2))
         # for row in range(3):
         #     for column in range(2):
@@ -64,7 +65,8 @@ class SOLUTION:
         # while not os.path.exists(fitnessFileName):
         #     time.sleep(0.01)
 
-        pyrosim.Start_NeuralNetwork("brain.nndf")
+        brainFile = "brain" + str(self.myID) + ".nndf"
+        pyrosim.Start_NeuralNetwork(brainFile)
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
         pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
         pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "FrontLeg")
@@ -84,3 +86,6 @@ class SOLUTION:
 
     def Mutate(self):
         self.weight[random.randint(0,2)][random.randint(0,1)] = random.random()*2-1
+
+    def Set_ID(self, newID):
+        self.myID = newID
