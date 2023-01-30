@@ -3,12 +3,12 @@ import pyrosim.pyrosim as pyrosim
 import os
 import random
 import time
-
+import constants as c
 class SOLUTION: 
 
     def __init__(self, ID):
         self.myID = ID
-        self.weight = np.zeros((3,2))
+        self.weight = np.zeros((c.numSensorNeurons,c.numMotorNeurons))
         # for row in range(3):
         #     for column in range(2):
         #         self.weight[row][column] = np.random.rand()
@@ -96,19 +96,20 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron( name = 3 , jointName = "Torso_BackLeg")
         pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_FrontLeg")
 
-        for currentRow in range(3):
-            for currentColumn in range(2):
+        for currentRow in range(c.numSensorNeurons):
+            for currentColumn in range(c.numMotorNeurons):
                 self.weight[currentRow][currentColumn] = np.random.rand()
-                pyrosim.Send_Synapse( sourceNeuronName = currentRow , targetNeuronName = currentColumn+3 , weight = self.weight[currentRow][currentColumn])
+                pyrosim.Send_Synapse( sourceNeuronName = currentRow , targetNeuronName = currentColumn+c.numSensorNeurons , weight = self.weight[currentRow][currentColumn])
 
         # for sensor in range(3):
         #     for motor in range(3,5):
         #         pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor , weight = random.randint(-1,1) )
 
         pyrosim.End()
+        # exit()
 
     def Mutate(self):
-        self.weight[random.randint(0,2)][random.randint(0,1)] = random.random()*2-1
+        self.weight[random.randint(0,(c.numSensorNeurons-1))][random.randint(0,(c.numMotorNeurons-1))] = random.random()*2-1
 
     def Set_ID(self, newID):
         self.myID = newID
