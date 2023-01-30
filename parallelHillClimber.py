@@ -6,7 +6,7 @@ import constants as c
 class PARALLEL_HILL_CLIMBER: 
 
     def __init__(self):
-        for pop in range(c.populationSize):
+        for pop in range(c.populationSize*c.numberOfGenerations):
             try:
                 os.system("del brain" + str(pop) + ".nndf")
             except:
@@ -82,4 +82,5 @@ class PARALLEL_HILL_CLIMBER:
 
     def Print(self):
         for key in self.parents:
-            print("\n[" + str(self.parents[key].fitness) + ", " + str(self.children[key].fitness) + "]\n")
+            for gen in range(c.numberOfGenerations):
+                print("\n[" + str(self.parents[key].fitness) + ", " + str(self.children[gen].fitness) + "]\n")
