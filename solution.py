@@ -55,12 +55,12 @@ class SOLUTION:
         # while not os.path.exists(fitnessFileName):
         #     time.sleep(0.01)
 
-        length = 1
-        width = 1
-        height = 1
+        length = 0.5
+        width = 4
+        height = 1.5
 
-        x = 2
-        y = 2
+        x = 4
+        y = 0
         z = height/2
 
         pyrosim.Start_SDF("world.sdf")
