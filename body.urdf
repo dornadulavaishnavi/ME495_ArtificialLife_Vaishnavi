@@ -11,7 +11,7 @@
                 <box size="1.0 1.0 1.0" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -40,7 +40,7 @@
                 <box size="0.2 1 0.2" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -69,7 +69,7 @@
                 <box size="0.2 1 0.2" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -98,7 +98,7 @@
                 <box size="1 0.2 0.2" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -127,7 +127,7 @@
                 <box size="1 0.2 0.2" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -156,7 +156,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -185,7 +185,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -214,7 +214,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -243,7 +243,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -272,7 +272,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -301,7 +301,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -330,7 +330,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -359,7 +359,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -388,7 +388,7 @@
                 <box size="0.2 1 0.2" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -417,7 +417,7 @@
                 <box size="0.2 1 0.2" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -446,7 +446,7 @@
                 <box size="1 0.2 0.2" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -475,7 +475,7 @@
                 <box size="1 0.2 0.2" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -504,7 +504,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -533,7 +533,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -562,7 +562,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -591,7 +591,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -620,7 +620,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -649,7 +649,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -678,7 +678,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
@@ -707,7 +707,7 @@
                 <box size="0.2 0.2 1" />
             </geometry>
             <material name="Cyan">
-                <color rgba="0 1.0 1.0 1.0"/>
+                <color rgba="0 1.0 0.5 0.9"/>
             </material>
         </visual>
         <collision>
