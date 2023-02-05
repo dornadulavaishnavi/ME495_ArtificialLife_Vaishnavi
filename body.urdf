@@ -21,6 +21,35 @@
             </geometry>
         </collision>
     </link>
+    <joint name="Torso_Box" type="spherical">
+       <parent link="Torso"/>
+       <child  link="Box"/>
+       <origin rpy="0 0 0" xyz="0.0 0 2.0" />
+     <axis xyz="0 1 0"/>
+       <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
+    </joint>
+    <link name="Box">
+        <inertial>
+            <origin xyz="0 0 2" rpy="0 0 0"/>
+            <mass value="1" />
+            <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 2" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.5 0.5 0.5" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 0.5 0.9"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 2" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.5 0.5 0.5" />
+            </geometry>
+        </collision>
+    </link>
     <joint name="Torso_BackLeg" type="revolute">
        <parent link="Torso"/>
        <child  link="BackLeg"/>
@@ -79,11 +108,11 @@
             </geometry>
         </collision>
     </link>
-    <joint name="Lower_BackLowerLeg" type="prismatic">
+    <joint name="Lower_BackLowerLeg" type="revolute">
        <parent link="BackLowerLeg"/>
        <child  link="BackLowerLowerLeg"/>
        <origin rpy="0 0 0" xyz="0.0 0.0 -1.0" />
-     <axis xyz="0 0 1"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="BackLowerLowerLeg">
@@ -166,11 +195,11 @@
             </geometry>
         </collision>
     </link>
-    <joint name="Lower_FrontLowerLeg" type="prismatic">
+    <joint name="Lower_FrontLowerLeg" type="revolute">
        <parent link="FrontLowerLeg"/>
        <child  link="FrontLowerLowerLeg"/>
        <origin rpy="0 0 0" xyz="0.0 0.0 -1.0" />
-     <axis xyz="0 0 1"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="FrontLowerLowerLeg">
@@ -253,11 +282,11 @@
             </geometry>
         </collision>
     </link>
-    <joint name="Lower_LeftLowerLeg" type="prismatic">
+    <joint name="Lower_LeftLowerLeg" type="revolute">
        <parent link="LeftLowerLeg"/>
        <child  link="LeftLowerLowerLeg"/>
        <origin rpy="0 0 0" xyz="0.0 0.0 -1.0" />
-     <axis xyz="0 0 1"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="LeftLowerLowerLeg">
@@ -340,11 +369,11 @@
             </geometry>
         </collision>
     </link>
-    <joint name="Lower_RightLowerLeg" type="prismatic">
+    <joint name="Lower_RightLowerLeg" type="revolute">
        <parent link="RightLowerLeg"/>
        <child  link="RightLowerLowerLeg"/>
        <origin rpy="0 0 0" xyz="0.0 0.0 -1.0" />
-     <axis xyz="0 0 1"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="RightLowerLowerLeg">
@@ -427,11 +456,11 @@
             </geometry>
         </collision>
     </link>
-    <joint name="Lower_BackSideLowerLeg" type="prismatic">
+    <joint name="Lower_BackSideLowerLeg" type="revolute">
        <parent link="BackSideLowerLeg"/>
        <child  link="BackSideLowerLowerLeg"/>
        <origin rpy="0 0 0" xyz="0.0 0.0 -1.0" />
-     <axis xyz="0 0 1"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="BackSideLowerLowerLeg">
@@ -514,11 +543,11 @@
             </geometry>
         </collision>
     </link>
-    <joint name="Lower_FrontSideLowerLeg" type="prismatic">
+    <joint name="Lower_FrontSideLowerLeg" type="revolute">
        <parent link="FrontSideLowerLeg"/>
        <child  link="FrontSideLowerLowerLeg"/>
        <origin rpy="0 0 0" xyz="0.0 0.0 -1.0" />
-     <axis xyz="0 0 1"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="FrontSideLowerLowerLeg">
@@ -601,11 +630,11 @@
             </geometry>
         </collision>
     </link>
-    <joint name="Lower_LeftSideLowerLeg" type="prismatic">
+    <joint name="Lower_LeftSideLowerLeg" type="revolute">
        <parent link="LeftSideLowerLeg"/>
        <child  link="LeftSideLowerLowerLeg"/>
        <origin rpy="0 0 0" xyz="0.0 0.0 -1.0" />
-     <axis xyz="0 0 1"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="LeftSideLowerLowerLeg">
@@ -688,11 +717,11 @@
             </geometry>
         </collision>
     </link>
-    <joint name="Lower_RightSideLowerLeg" type="prismatic">
+    <joint name="Lower_RightSideLowerLeg" type="revolute">
        <parent link="RightSideLowerLeg"/>
        <child  link="RightSideLowerLowerLeg"/>
        <origin rpy="0 0 0" xyz="0.0 0.0 -1.0" />
-     <axis xyz="0 0 1"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="RightSideLowerLowerLeg">
