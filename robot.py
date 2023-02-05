@@ -11,7 +11,6 @@ class ROBOT:
         self.solutionID = solutionID
 
         self.robotId = p.loadURDF("body.urdf")
-        self.world = p.loadSDF("world.sdf")
         self.nn = NEURAL_NETWORK("brain" + str(self.solutionID) + ".nndf")
 
         pyrosim.Prepare_To_Simulate(self.robotId)
@@ -73,23 +72,3 @@ class ROBOT:
         f.close()
         os.system("rename " + tmpString + " " + fitnessString)
         exit()
-
-    # def Get_Fitness(self):
-    #     stateOfBox = p.getLinkState(self.robotId,1)
-    #     # print(stateOfBox)
-    #     # exit()
-    #     positionOfBox = stateOfBox[0]
-    #     xCoordinateOfLinkZero = positionOfBox[0]
-    #     # basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
-    #     # basePosition = basePositionAndOrientation[17]
-    #     # xCoordinateOfLinkZero = basePosition[0]
-    #     print(xCoordinateOfLinkZero)
-    #     fitnessString = "fitness"+ str(self.solutionID) + ".txt"
-    #     tmpString = "tmp" + str(self.solutionID) + ".txt"
-
-    #     f = (open(tmpString, "w"))
-    #     f.write(str(xCoordinateOfLinkZero))
-    #     # print("rename " + tmpString + " " + fitnessString)
-    #     f.close()
-    #     os.system("rename " + tmpString + " " + fitnessString)
-    #     exit()
