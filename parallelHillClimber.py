@@ -67,7 +67,7 @@ class PARALLEL_HILL_CLIMBER:
         # exit()
         for key in self.parents:
             for gen in range(c.numberOfGenerations):
-                if (self.parents[key].fitness > self.children[gen].fitness):
+                if (self.parents[key].fitness < self.children[gen].fitness):
                     self.parents[key] = self.children[gen]
 
     def Show_Best(self):
