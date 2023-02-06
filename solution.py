@@ -95,6 +95,9 @@ class SOLUTION:
         pyrosim.Send_Joint( name = "Torso_RightLowerLeg" , parent= "RightLeg" , child = "RightLowerLeg" , type = "revolute", position = [1.0,0.0,0.0], jointAxis = jointAxisString)
         pyrosim.Send_Cube(name="RightLowerLeg", pos=[0.0,0.0,-0.5] , size=[0.2,0.2,1])
 
+        pyrosim.Send_Joint( name = "Torso_HittingLeg" , parent= "Torso" , child = "HittingLeg" , type = "revolute", position = [0.0,0.0,1.0], jointAxis = jointAxisString)
+        pyrosim.Send_Cube(name="HittingLeg", pos=[0.0,0.0,1.0] , size=[0.2,0.2,1])
+
         pyrosim.End()
 
         self.Create_Block()
@@ -129,6 +132,7 @@ class SOLUTION:
         pyrosim.Send_Sensor_Neuron(name = 6 , linkName = "BackLowerLeg")
         pyrosim.Send_Sensor_Neuron(name = 7 , linkName = "LeftLowerLeg")
         pyrosim.Send_Sensor_Neuron(name = 8 , linkName = "RightLowerLeg")
+        pyrosim.Send_Sensor_Neuron(name = 9 , linkName = "HittingLeg")
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons , jointName = "Torso_BackLeg")
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons+1 , jointName = "Torso_FrontLeg")
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons+2 , jointName = "Torso_LeftLeg")
@@ -137,6 +141,7 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons+5 , jointName = "Torso_BackLowerLeg")
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons+6 , jointName = "Torso_LeftLowerLeg")
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons+7 , jointName = "Torso_RightLowerLeg")
+        pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons+8 , jointName = "Torso_HittingLeg")
 
         for currentRow in range(c.numSensorNeurons):
             for currentColumn in range(c.numMotorNeurons):
@@ -151,7 +156,9 @@ class SOLUTION:
         # exit()
 
     def Mutate(self):
-        self.weight[random.randint(0,(c.numSensorNeurons-1))][random.randint(0,(c.numMotorNeurons-1))] = random.random()*2-1
+        mutate_random = random.random()*2-1
+        self.weight[random.randint(0,(c.numSensorNeurons-1))][random.randint(0,(c.numMotorNeurons-1))] = mutate_random
+        self.weight[0][8] = mutate_random
 
     def Set_ID(self, newID):
         self.myID = newID

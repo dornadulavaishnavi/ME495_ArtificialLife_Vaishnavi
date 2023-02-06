@@ -15,7 +15,7 @@ maximum_force = 75
 numberOfGenerations = 3
 populationSize = 3
 
-numSensorNeurons = 9
-numMotorNeurons = 8
+numSensorNeurons = 10
+numMotorNeurons = 9
 
 motorJointRange = 0.3
