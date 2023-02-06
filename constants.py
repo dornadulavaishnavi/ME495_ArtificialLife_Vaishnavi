@@ -10,10 +10,10 @@ amplitude_frontLeg = numpy.pi/2
 frequency_frontLeg = 20
 phaseOffset_frontLeg = numpy.pi/2
 
-maximum_force = 75
+maximum_force = 50
 
-numberOfGenerations = 10
-populationSize = 10
+numberOfGenerations = 7
+populationSize = 7
 
 numSensorNeurons = 10
 numMotorNeurons = 9

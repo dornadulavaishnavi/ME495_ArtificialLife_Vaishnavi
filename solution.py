@@ -87,16 +87,16 @@ class SOLUTION:
         pyrosim.Send_Cube(name="RightLeg", pos=[0.5,0.0,0.0] , size=[1,0.2,0.2])
 
         pyrosim.Send_Joint( name = "Torso_BackLowerLeg" , parent= "BackLeg" , child = "BackLowerLeg" , type = "revolute", position = [0.0,-1.0,0.0], jointAxis = jointAxisString)
-        pyrosim.Send_Cube(name="BackLowerLeg", pos=[0.0,0.0,-0.5] , size=[0.2,0.2,1])
+        pyrosim.Send_Cube(name="BackLowerLeg", pos=[0.0,0.0,-0.5] , size=[0.2,0.8,1])
         pyrosim.Send_Joint( name = "Torso_FrontLowerLeg" , parent= "FrontLeg" , child = "FrontLowerLeg" , type = "revolute", position = [0.0,1.0,0.0], jointAxis = jointAxisString)
-        pyrosim.Send_Cube(name="FrontLowerLeg", pos=[0.0,0.0,-0.5] , size=[0.2,0.2,1])
+        pyrosim.Send_Cube(name="FrontLowerLeg", pos=[0.0,0.0,-0.5] , size=[0.2,0.8,1])
         pyrosim.Send_Joint( name = "Torso_LeftLowerLeg" , parent= "LeftLeg" , child = "LeftLowerLeg" , type = "revolute", position = [-1.0,0.0,0.0], jointAxis = jointAxisString)
-        pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0.0,0.0,-0.5] , size=[0.2,0.2,1])
+        pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0.0,0.0,-0.5] , size=[0.2,0.8,1])
         pyrosim.Send_Joint( name = "Torso_RightLowerLeg" , parent= "RightLeg" , child = "RightLowerLeg" , type = "revolute", position = [1.0,0.0,0.0], jointAxis = jointAxisString)
-        pyrosim.Send_Cube(name="RightLowerLeg", pos=[0.0,0.0,-0.5] , size=[0.2,0.2,1])
+        pyrosim.Send_Cube(name="RightLowerLeg", pos=[0.0,0.0,-0.5] , size=[0.2,0.8,1])
 
-        pyrosim.Send_Joint( name = "Torso_HittingLeg" , parent= "Torso" , child = "HittingLeg" , type = "revolute", position = [0.0,0.0,1.0], jointAxis = jointAxisString)
-        pyrosim.Send_Cube(name="HittingLeg", pos=[0.0,0.0,1.0] , size=[0.2,0.2,1])
+        pyrosim.Send_Joint( name = "Torso_HittingLeg" , parent= "Torso" , child = "HittingLeg" , type = "revolute", position = [0.0,0.0,1.5], jointAxis = "0 1 0")
+        pyrosim.Send_Cube(name="HittingLeg", pos=[0.0,0.0,0.0] , size=[0.2,0.2,1])
 
         pyrosim.End()
 
@@ -111,7 +111,7 @@ class SOLUTION:
 
         x = 0
         y = 0
-        z = 4
+        z = 2.5
 
         pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length,width,height])
         pyrosim.End()
@@ -158,7 +158,7 @@ class SOLUTION:
     def Mutate(self):
         mutate_random = random.random()*2-1
         self.weight[random.randint(0,(c.numSensorNeurons-1))][random.randint(0,(c.numMotorNeurons-1))] = mutate_random
-        self.weight[7][8] = mutate_random*2
+        self.weight[8][8] = mutate_random*2
 
     def Set_ID(self, newID):
         self.myID = newID

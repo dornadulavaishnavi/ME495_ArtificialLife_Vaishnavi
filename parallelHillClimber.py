@@ -68,18 +68,20 @@ class PARALLEL_HILL_CLIMBER:
         # exit()
         for key in self.parents:
             for gen in range(c.numberOfGenerations):
+                # print(str(self.parents[key].fitness) + " " + str(self.children[gen].fitness))
                 if (self.parents[key].fitness < self.children[gen].fitness):
                     self.parents[key] = self.children[gen]
 
     def Show_Best(self):
-        best = 0
+        best = -10000
         best_key = 0
         for parent in self.parents:
             if best < self.parents[parent].fitness:
                 best = self.parents[parent].fitness
                 best_key = parent
+        print(self.parents[best_key].fitness)
         self.parents[best_key].Start_Simulation("GUI")
-
+        
     def Evaluate(self, solutions):
         for solution in solutions:
             solutions[solution].Start_Simulation("DIRECT")
@@ -90,4 +92,5 @@ class PARALLEL_HILL_CLIMBER:
     def Print(self):
         for key in self.parents:
             for gen in range(c.numberOfGenerations):
+                # print(str(key) + " " + str(gen))
                 print("\n[" + str(self.parents[key].fitness) + ", " + str(self.children[gen].fitness) + "]\n")

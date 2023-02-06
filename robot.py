@@ -78,6 +78,8 @@ class ROBOT:
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.blockID)
         basePosition = basePositionAndOrientation[0]
         xCoordinateOfLinkZero = basePosition[0]
+        # print("x of block" + str(xCoordinateOfLinkZero))
+
         fitnessString = "fitness"+ str(self.solutionID) + ".txt"
         tmpString = "tmp" + str(self.solutionID) + ".txt"
 
