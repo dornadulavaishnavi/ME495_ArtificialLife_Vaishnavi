@@ -55,17 +55,17 @@ class SOLUTION:
         # while not os.path.exists(fitnessFileName):
         #     time.sleep(0.01)
 
-        length = 1
-        width = 1
-        height = 1
+        # length = 1
+        # width = 1
+        # height = 1
 
-        x = 2
-        y = 2
-        z = height/2
+        # x = 2
+        # y = 2
+        # z = height/2
 
         pyrosim.Start_SDF("world.sdf")
 
-        pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length,width,height])
+        # pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length,width,height])
         pyrosim.End()
 
     def Create_Body(self):
@@ -96,8 +96,23 @@ class SOLUTION:
         pyrosim.Send_Cube(name="RightLowerLeg", pos=[0.0,0.0,-0.5] , size=[0.2,0.2,1])
 
         pyrosim.End()
+
+        self.Create_Block()
         # exit()
-        
+    
+    def Create_Block(self):
+        pyrosim.Start_URDF("block.urdf")
+        length = 0.5
+        width = 0.5
+        height = 0.5
+
+        x = 0
+        y = 0
+        z = 4
+
+        pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length,width,height])
+        pyrosim.End()
+
     def Create_Brain(self):
         # fitnessFileName = "fitness.txt"
         # while not os.path.exists(fitnessFileName):
