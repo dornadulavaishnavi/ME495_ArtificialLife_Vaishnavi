@@ -12,8 +12,8 @@ phaseOffset_frontLeg = numpy.pi/2
 
 maximum_force = 75
 
-numberOfGenerations = 3
-populationSize = 3
+numberOfGenerations = 10
+populationSize = 10
 
 numSensorNeurons = 10
 numMotorNeurons = 9

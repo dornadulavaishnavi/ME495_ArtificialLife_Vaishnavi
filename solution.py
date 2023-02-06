@@ -158,7 +158,7 @@ class SOLUTION:
     def Mutate(self):
         mutate_random = random.random()*2-1
         self.weight[random.randint(0,(c.numSensorNeurons-1))][random.randint(0,(c.numMotorNeurons-1))] = mutate_random
-        self.weight[0][8] = mutate_random
+        self.weight[7][8] = mutate_random*2
 
     def Set_ID(self, newID):
         self.myID = newID

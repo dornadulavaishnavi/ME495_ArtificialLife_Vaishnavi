@@ -7,4 +7,4 @@ class WORLD:
 
         self.planeId = p.loadURDF("plane.urdf")
         p.loadSDF("world.sdf")
-        p.loadURDF("block.urdf")
+        # p.loadURDF("block.urdf")
