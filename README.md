@@ -45,7 +45,9 @@ The robot's goal is to get the purple block to go as far to the right (out of th
 Initially, the shape of the quadruped was editted to have 8 legs, 2 on each side, but this impeded the robot's locomotion, so I removed the extra legs and instead added a 'horn' on top that could swing and hit the block. I also created a new urdf file for the block itself so I could track its position to access in the fitness function. This block could not be added to the robot's body urdf file because there can only be 1 root element in each file and that would restrict the block to be attached to an existing robot element through a joint. The mutate function changed to affect 2 joints: 1 leg and the horn. To ensure there isn't too much randomness introduced, the same random value is assigned to both elements. An interesting bug that I believe to be an issue with the local system is it will not show the initial random solution if there are more than 8 generations and 8 memebers of the population. These values can be found in the constants file.
 
 ### Embed Video and Explain what is seen
-In this video, the random robot solution has weak motions and knocks the block backwards but the evolved solution moves more purposefully, knocking the block forward initially and 'dribbling' it forward with more force to move it further out of the screen and to the right
+In this video, the random robot solution has weak motions and knocks the block backwards but the evolved solution moves more purposefully (less jerky), knocking the block forward initially and 'dribbling' it forward with more force to move it further out of the screen and to the right. This video is at 3.5x the speed of the original video.
+
+The real time video can be found at: https://youtu.be/lmJ0lO5zIUg
 
 #### This project was created by following the Ludobots course on Reddit
 #### Assigned by Dr. Kriegman at Northwestern University
