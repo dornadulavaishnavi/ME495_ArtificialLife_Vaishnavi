@@ -47,6 +47,8 @@ Initially, the shape of the quadruped was editted to have 8 legs, 2 on each side
 ### Embed Video and Explain what is seen
 In this video, the random robot solution has weak motions and knocks the block backwards but the evolved solution moves more purposefully (less jerky), knocking the block forward initially and 'dribbling' it forward with more force to move it further out of the screen and to the right. This video is at 3.5x the speed of the original video.
 
+https://user-images.githubusercontent.com/90789243/217118657-0714cb10-8379-41a7-97cf-2b0f761a88c7.mp4
+
 The real time video can be found at: https://youtu.be/lmJ0lO5zIUg
 
 #### This project was created by following the Ludobots course on Reddit
