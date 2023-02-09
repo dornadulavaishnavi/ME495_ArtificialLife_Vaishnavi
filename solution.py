@@ -18,7 +18,7 @@ class SOLUTION:
         self.weight = self.weight*2-1
         # print(self.weight)
         # exit()
-        self.numLinks = random.randint(1,15)
+        self.numLinks = random.randint(1,10)
         print("Number of Links Expected "+str(self.numLinks))
     
     def Evaluate(self, directOrGUI):
@@ -89,7 +89,7 @@ class SOLUTION:
         zPrev = randZ/2
 
         stringName = baseString + str(curIndex)
-        pyrosim.Send_Cube(name=stringName, pos=[0.0,0.0,randZ/2] , size=[randX,randY,randZ])
+        pyrosim.Send_Cube(name=stringName, pos=[0.0,0.0,randZ] , size=[randX,randY,randZ])
         curIndex += 1
 
         for cube in range(self.numLinks-1):
@@ -98,11 +98,11 @@ class SOLUTION:
             randZ = random.uniform(0.5,3.0)
 
             stringName = baseString + str(curIndex)
-            pyrosim.Send_Cube(name=stringName, pos=[xPrev,0.0,randZ] , size=[randX,randY,randZ])
+            pyrosim.Send_Cube(name=stringName, pos=[xPrev*2,0.0,randZ] , size=[randX,randY,randZ])
 
             prevStringName = baseString + str(curIndex-1)
             jointName = str(prevStringName) + "_" + stringName
-            pyrosim.Send_Joint( name = "jointName" , parent= "prevStringName" , child = "stringName" , type = "revolute", position = [0.0,yPrev,zPrev], jointAxis = jointAxisString)
+            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [0.0,yPrev,zPrev], jointAxis = jointAxisString)
 
             xPrev = randX/2
             yPrev = randY/2
