@@ -79,35 +79,58 @@ class SOLUTION:
         jointAxisString = "0 1 0"
         pyrosim.Start_URDF("body.urdf")
         
+        self.links = []
+        self.joints = []
+
         curIndex = 0
         baseString = "Cube"
-        randX = random.uniform(0.5,3.0)
-        randY = random.uniform(0.5,3.0)
-        randZ = random.uniform(0.5,3.0)
+        randX = random.uniform(0.5,2.0)
+        randY = random.uniform(0.5,2.0)
+        randZ = random.uniform(0.5,2.0)
         xPrev = randX/2
         yPrev = randY/2
         zPrev = randZ/2
 
         stringName = baseString + str(curIndex)
         pyrosim.Send_Cube(name=stringName, pos=[0.0,0.0,randZ] , size=[randX,randY,randZ])
+
         curIndex += 1
 
-        for cube in range(self.numLinks-1):
-            randX = random.uniform(0.5,3.0)
-            randY = random.uniform(0.5,3.0)
-            randZ = random.uniform(0.5,3.0)
-
-            stringName = baseString + str(curIndex)
-            pyrosim.Send_Cube(name=stringName, pos=[xPrev*2,0.0,randZ] , size=[randX,randY,randZ])
+        if self.numLinks > 1:
+            # absolute coordinates
+            randX = random.uniform(0.5,2.0)
+            randY = random.uniform(0.5,2.0)
+            randZ = random.uniform(0.5,2.0)
 
             prevStringName = baseString + str(curIndex-1)
+            stringName = baseString + str(curIndex)
             jointName = str(prevStringName) + "_" + stringName
-            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [0.0,yPrev,zPrev], jointAxis = jointAxisString)
+            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev/2,0.0,zPrev], jointAxis = jointAxisString)
+
+            pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX/2),0.0,zPrev] , size=[randX,randY,randZ])
 
             xPrev = randX/2
             yPrev = randY/2
             zPrev = randZ/2
             curIndex +=1
+
+
+        # for cube in range(self.numLinks-2):
+        #     randX = random.uniform(0.5,2.0)
+        #     randY = random.uniform(0.5,2.0)
+        #     randZ = random.uniform(0.5,2.0)
+
+        #     prevStringName = baseString + str(curIndex-1)
+        #     stringName = baseString + str(curIndex)
+        #     jointName = str(prevStringName) + "_" + stringName
+        #     pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev/2,0.0,zPrev], jointAxis = jointAxisString)
+
+        #     pyrosim.Send_Cube(name=stringName, pos=[(xPrev),0.0,0.0] , size=[randX,randY,randZ])
+
+        #     xPrev = randX/2
+        #     yPrev = randY/2
+        #     zPrev = randZ/2
+        #     curIndex +=1
 
         pyrosim.End()
         # pyrosim.Send_Joint( name = "Torso_BackLeg" , parent= "Torso" , child = "BackLeg" , type = "revolute", position = [0.0,-0.5,1.0], jointAxis = jointAxisString)
