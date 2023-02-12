@@ -86,6 +86,9 @@ class SOLUTION:
         jointAxisString = "0 1 0"
         pyrosim.Start_URDF("body.urdf")
         
+        low_bound = 0.2
+        high_bound = 1.5
+
         self.links = []
         self.joints = []
         self.sensor_links = []
@@ -93,9 +96,9 @@ class SOLUTION:
 
         curIndex = 0
         baseString = "Cube"
-        randX = random.uniform(0.5,2.0)
-        randY = random.uniform(0.5,2.0)
-        randZ = random.uniform(0.5,2.0)
+        randX = random.uniform(low_bound,high_bound)
+        randY = random.uniform(low_bound,high_bound)
+        randZ = random.uniform(low_bound,high_bound)
         xPrev = randX/2
         yPrev = randY/2
         zPrev = randZ/2
@@ -111,9 +114,9 @@ class SOLUTION:
 
         if self.numLinks > 1:
             # absolute coordinates
-            randX = random.uniform(0.5,2.0)
-            randY = random.uniform(0.5,2.0)
-            randZ = random.uniform(0.5,2.0)
+            randX = random.uniform(low_bound,high_bound)
+            randY = random.uniform(low_bound,high_bound)
+            randZ = random.uniform(low_bound,high_bound)
 
             prevStringName = baseString + str(curIndex-1)
             stringName = baseString + str(curIndex)
@@ -122,7 +125,7 @@ class SOLUTION:
             pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev/2,0.0,zPrev], jointAxis = jointAxisString)
             self.joints.append(jointName)
             if motor_flag == 1:
-                self.motor_links.append(jointName)
+                self.motor_joints.append(jointName)
 
             sensor_flag = random.randint(0,1)
             pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX/2),0.0,zPrev] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
@@ -137,9 +140,9 @@ class SOLUTION:
 
 
         for cube in range(self.numLinks-2):
-            randX = random.uniform(0.5,2.0)
-            randY = random.uniform(0.5,2.0)
-            randZ = random.uniform(0.5,2.0)
+            randX = random.uniform(low_bound,high_bound)
+            randY = random.uniform(low_bound,high_bound)
+            randZ = random.uniform(low_bound,high_bound)
 
             prevStringName = baseString + str(curIndex-1)
             stringName = baseString + str(curIndex)
@@ -148,7 +151,7 @@ class SOLUTION:
             pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev,0.0,zPrev], jointAxis = jointAxisString)
             self.joints.append(jointName)
             if motor_flag == 1:
-                self.motor_links.append(jointName)
+                self.motor_joints.append(jointName)
 
             sensor_flag = random.randint(0,1)
             pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX),0.0,zPrev] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
@@ -210,21 +213,19 @@ class SOLUTION:
         pyrosim.Start_NeuralNetwork(brainFile)
         # print("creating brain file")
 
-        # sensor_index = 0
-        # num_neurons = random.randint(0,(len(self.links)-1))
-        # valid_spot_flag = 0
-        # self.sensor_links = []
-        # for link in range(num_neurons):
-        #     valid_spot_flag = 0
-        #     while valid_spot_flag == 0:
-        #         index = random.randint(0,num_neurons)
-        #         if index in self.sensor_links:
-        #             valid_spot_flag = 0
-        #         else:
-        #             pyrosim.Send_Sensor_Neuron(name = sensor_index , linkName = self.links[index])
-        #             sensor_index += 1
-        #             self.sensor_links.append(link)
-        #             valid_spot_flag = 1
+        sensor_index = 0
+        for link in self.sensor_links:
+            pyrosim.Send_Sensor_Neuron(name = sensor_index , linkName = link)
+            sensor_index += 1
+
+        motor_index = sensor_index
+        for joint in self.motor_joints:
+            pyrosim.Send_Motor_Neuron( name = motor_index , jointName = joint)
+            motor_index += 1
+
+        for sensor in range(sensor_index):
+            for motor in range(len(self.motor_joints)):
+                pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor+sensor_index-1 , weight = random.random()*2-1)
 
         # pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
         # pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
