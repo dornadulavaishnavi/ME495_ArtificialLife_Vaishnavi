@@ -88,6 +88,7 @@ class SOLUTION:
         
         self.links = []
         self.joints = []
+        self.sensor_links = []
 
         curIndex = 0
         baseString = "Cube"
@@ -99,7 +100,8 @@ class SOLUTION:
         zPrev = randZ/2
 
         stringName = baseString + str(curIndex)
-        pyrosim.Send_Cube(name=stringName, pos=[0.0,0.0,randZ] , size=[randX,randY,randZ])
+        sensor_flag = random.randint(0,1)
+        pyrosim.Send_Cube(name=stringName, pos=[0.0,0.0,randZ] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
         self.links.append(stringName)
 
         curIndex += 1
@@ -116,7 +118,8 @@ class SOLUTION:
             pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev/2,0.0,zPrev], jointAxis = jointAxisString)
             self.joints.append(jointName)
 
-            pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX/2),0.0,zPrev] , size=[randX,randY,randZ])
+            sensor_flag = random.randint(0,1)
+            pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX/2),0.0,zPrev] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
             # p.changeVisualShape(1, 0, rgbaColor=[0.8, 0.6, 0.4, 1])
             self.links.append(stringName)
 
@@ -136,8 +139,9 @@ class SOLUTION:
             jointName = str(prevStringName) + "_" + stringName
             pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev,0.0,zPrev], jointAxis = jointAxisString)
             self.joints.append(jointName)
-
-            pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX),0.0,zPrev] , size=[randX,randY,randZ])
+            
+            sensor_flag = random.randint(0,1)
+            pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX),0.0,zPrev] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
             self.links.append(stringName)
 
             xPrev = randX/2
@@ -145,7 +149,7 @@ class SOLUTION:
             zPrev = randZ/2
             curIndex +=1
 
-            break
+            # break
 
         pyrosim.End()
         # pyrosim.Send_Joint( name = "Torso_BackLeg" , parent= "Torso" , child = "BackLeg" , type = "revolute", position = [0.0,-0.5,1.0], jointAxis = jointAxisString)
@@ -194,21 +198,21 @@ class SOLUTION:
         pyrosim.Start_NeuralNetwork(brainFile)
         # print("creating brain file")
 
-        sensor_index = 0
-        num_neurons = random.randint(0,(len(self.links)-1))
-        valid_spot_flag = 0
-        self.sensor_links = []
-        for link in range(num_neurons):
-            valid_spot_flag = 0
-            while valid_spot_flag == 0:
-                index = random.randint(0,num_neurons)
-                if index in self.sensor_links:
-                    valid_spot_flag = 0
-                else:
-                    pyrosim.Send_Sensor_Neuron(name = sensor_index , linkName = self.links[index])
-                    sensor_index += 1
-                    self.sensor_links.append(link)
-                    valid_spot_flag = 1
+        # sensor_index = 0
+        # num_neurons = random.randint(0,(len(self.links)-1))
+        # valid_spot_flag = 0
+        # self.sensor_links = []
+        # for link in range(num_neurons):
+        #     valid_spot_flag = 0
+        #     while valid_spot_flag == 0:
+        #         index = random.randint(0,num_neurons)
+        #         if index in self.sensor_links:
+        #             valid_spot_flag = 0
+        #         else:
+        #             pyrosim.Send_Sensor_Neuron(name = sensor_index , linkName = self.links[index])
+        #             sensor_index += 1
+        #             self.sensor_links.append(link)
+        #             valid_spot_flag = 1
 
         # pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
         # pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
