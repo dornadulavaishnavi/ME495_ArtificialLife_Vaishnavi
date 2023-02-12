@@ -134,16 +134,18 @@ class SOLUTION:
             prevStringName = baseString + str(curIndex-1)
             stringName = baseString + str(curIndex)
             jointName = str(prevStringName) + "_" + stringName
-            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev,0.0,0.0], jointAxis = jointAxisString)
+            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev,0.0,zPrev], jointAxis = jointAxisString)
             self.joints.append(jointName)
 
-            pyrosim.Send_Cube(name=stringName, pos=[(xPrev)+(randX/2),0.0,0.0] , size=[randX,randY,randZ])
+            pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX),0.0,zPrev] , size=[randX,randY,randZ])
             self.links.append(stringName)
 
             xPrev = randX/2
             yPrev = randY/2
             zPrev = randZ/2
             curIndex +=1
+
+            break
 
         pyrosim.End()
         # pyrosim.Send_Joint( name = "Torso_BackLeg" , parent= "Torso" , child = "BackLeg" , type = "revolute", position = [0.0,-0.5,1.0], jointAxis = jointAxisString)
