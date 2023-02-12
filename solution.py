@@ -164,7 +164,7 @@ class SOLUTION:
             zPrev = randZ/2
             curIndex +=1
 
-            # break
+            break
 
         pyrosim.End()
         # pyrosim.Send_Joint( name = "Torso_BackLeg" , parent= "Torso" , child = "BackLeg" , type = "revolute", position = [0.0,-0.5,1.0], jointAxis = jointAxisString)
