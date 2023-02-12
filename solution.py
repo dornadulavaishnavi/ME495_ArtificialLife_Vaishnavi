@@ -89,6 +89,7 @@ class SOLUTION:
         self.links = []
         self.joints = []
         self.sensor_links = []
+        self.motor_joints = []
 
         curIndex = 0
         baseString = "Cube"
@@ -103,6 +104,8 @@ class SOLUTION:
         sensor_flag = random.randint(0,1)
         pyrosim.Send_Cube(name=stringName, pos=[0.0,0.0,randZ] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
         self.links.append(stringName)
+        if sensor_flag == 1:
+            self.sensor_links.append(stringName)
 
         curIndex += 1
 
@@ -115,13 +118,17 @@ class SOLUTION:
             prevStringName = baseString + str(curIndex-1)
             stringName = baseString + str(curIndex)
             jointName = str(prevStringName) + "_" + stringName
+            motor_flag = random.randint(0,1)
             pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev/2,0.0,zPrev], jointAxis = jointAxisString)
             self.joints.append(jointName)
+            if motor_flag == 1:
+                self.motor_links.append(jointName)
 
             sensor_flag = random.randint(0,1)
             pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX/2),0.0,zPrev] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
-            # p.changeVisualShape(1, 0, rgbaColor=[0.8, 0.6, 0.4, 1])
             self.links.append(stringName)
+            if sensor_flag == 1:
+                self.sensor_links.append(stringName)
 
             xPrev = randX/2
             yPrev = randY/2
@@ -137,12 +144,17 @@ class SOLUTION:
             prevStringName = baseString + str(curIndex-1)
             stringName = baseString + str(curIndex)
             jointName = str(prevStringName) + "_" + stringName
+            motor_flag = random.randint(0,1)
             pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev,0.0,zPrev], jointAxis = jointAxisString)
             self.joints.append(jointName)
-            
+            if motor_flag == 1:
+                self.motor_links.append(jointName)
+
             sensor_flag = random.randint(0,1)
             pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX),0.0,zPrev] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
             self.links.append(stringName)
+            if sensor_flag == 1:
+                self.sensor_links.append(stringName)
 
             xPrev = randX/2
             yPrev = randY/2
