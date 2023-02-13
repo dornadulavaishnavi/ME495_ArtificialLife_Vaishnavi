@@ -8,7 +8,7 @@ class MATERIAL_SENSOR:
 
         self.string1 = '<material name="Green">'
 
-        self.string2 = '    <color rgba="0.1 0.9 0.1 1.0"/>'
+        self.string2 = '    <color rgba="0.1 0.9 0.1 0.9"/>'
 
         self.string3 = '</material>'
 

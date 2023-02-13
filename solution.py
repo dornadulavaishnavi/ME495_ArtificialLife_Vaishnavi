@@ -99,9 +99,9 @@ class SOLUTION:
         randX = random.uniform(low_bound,high_bound)
         randY = random.uniform(low_bound,high_bound)
         randZ = random.uniform(low_bound,high_bound)
-        xPrev = randX/2
-        yPrev = randY/2
-        zPrev = randZ/2
+        xPrev = randX
+        yPrev = randY
+        zPrev = randZ
 
         stringName = baseString + str(curIndex)
         sensor_flag = random.randint(0,1)
@@ -128,14 +128,14 @@ class SOLUTION:
                 self.motor_joints.append(jointName)
 
             sensor_flag = random.randint(0,1)
-            pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX/2),0.0,zPrev] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
+            pyrosim.Send_Cube(name=stringName, pos=[(randX/2),0.0,0.0] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
             self.links.append(stringName)
             if sensor_flag == 1:
                 self.sensor_links.append(stringName)
 
-            xPrev = randX/2
-            yPrev = randY/2
-            zPrev = randZ/2
+            xPrev = randX
+            yPrev = randY
+            zPrev = randZ
             curIndex +=1
 
 
@@ -148,23 +148,23 @@ class SOLUTION:
             stringName = baseString + str(curIndex)
             jointName = str(prevStringName) + "_" + stringName
             motor_flag = random.randint(0,1)
-            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev,0.0,zPrev], jointAxis = jointAxisString)
+            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev,0.0,0.0], jointAxis = jointAxisString)
             self.joints.append(jointName)
             if motor_flag == 1:
                 self.motor_joints.append(jointName)
 
             sensor_flag = random.randint(0,1)
-            pyrosim.Send_Cube(name=stringName, pos=[(xPrev/2)+(randX),0.0,zPrev] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
+            pyrosim.Send_Cube(name=stringName, pos=[randX/2,0.0,0.0] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
             self.links.append(stringName)
             if sensor_flag == 1:
                 self.sensor_links.append(stringName)
 
-            xPrev = randX/2
-            yPrev = randY/2
-            zPrev = randZ/2
+            xPrev = randX
+            yPrev = randY
+            zPrev = randZ
             curIndex +=1
 
-            break
+            # break
 
         pyrosim.End()
         # pyrosim.Send_Joint( name = "Torso_BackLeg" , parent= "Torso" , child = "BackLeg" , type = "revolute", position = [0.0,-0.5,1.0], jointAxis = jointAxisString)
