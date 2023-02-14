@@ -38,10 +38,12 @@ The solution class constructor creates a random number between 1 and 10 (inclusi
 
 ### Diagram of Joints and Links
 This diagram shows how the links and joints are related for a four body snake for the x dimension. 
+![block_relations](https://user-images.githubusercontent.com/90789243/218628878-37fb11a3-b796-45ad-8a9a-24e243989fc5.png)
 
 ### Embed Video 
 In this assignment, we generate snakes with a random number of links where each of these links are also a random shape. Then we assign sensors to random links as well and I assigned random joints to also have a motor. The brain0.nndf file in the background of the videos shows the sensor and motor neurons randomly generated tied to each snake.
 
+https://user-images.githubusercontent.com/90789243/218629281-c395bda7-d7c6-4d87-a500-5577bfe3d8e0.mp4
 
 The real time video can be found at: https://youtu.be/W9ltSqaAxW0
 
