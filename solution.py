@@ -25,7 +25,7 @@ class SOLUTION:
         self.weight = self.weight*2-1
         # print(self.weight)
         # exit()
-        self.numLinks = random.randint(1,10)
+        self.numLinks = random.randint(1,6)
         print("Number of Links Expected "+str(self.numLinks))
     
     def Evaluate(self, directOrGUI):
@@ -88,6 +88,7 @@ class SOLUTION:
         
         low_bound = 0.2
         high_bound = 1.5
+        joint_list = ["revolute","spherical","prismatic","fixed"]
 
         self.links = []
         self.joints = []
@@ -112,8 +113,34 @@ class SOLUTION:
 
         curIndex += 1
 
-        if self.numLinks > 1:
-            # absolute coordinates
+        # if self.numLinks > 1:
+        #     # absolute coordinates
+        #     randX = random.uniform(low_bound,high_bound)
+        #     randY = random.uniform(low_bound,high_bound)
+        #     randZ = random.uniform(low_bound,high_bound)
+
+        #     prevStringName = baseString + str(curIndex-1)
+        #     stringName = baseString + str(curIndex)
+        #     jointName = str(prevStringName) + "_" + stringName
+        #     motor_flag = random.randint(0,1)
+        #     pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev/2,0.0,zPrev], jointAxis = jointAxisString)
+        #     self.joints.append(jointName)
+        #     if motor_flag == 1:
+        #         self.motor_joints.append(jointName)
+
+        #     sensor_flag = random.randint(0,1)
+        #     pyrosim.Send_Cube(name=stringName, pos=[(randX/2),0.0,0.0] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
+        #     self.links.append(stringName)
+        #     if sensor_flag == 1:
+        #         self.sensor_links.append(stringName)
+
+        #     xPrev = randX
+        #     yPrev = randY
+        #     zPrev = randZ
+        #     curIndex +=1
+
+
+        for cube in range(self.numLinks-1):
             randX = random.uniform(low_bound,high_bound)
             randY = random.uniform(low_bound,high_bound)
             randZ = random.uniform(low_bound,high_bound)
@@ -122,33 +149,10 @@ class SOLUTION:
             stringName = baseString + str(curIndex)
             jointName = str(prevStringName) + "_" + stringName
             motor_flag = random.randint(0,1)
-            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev/2,0.0,zPrev], jointAxis = jointAxisString)
-            self.joints.append(jointName)
-            if motor_flag == 1:
-                self.motor_joints.append(jointName)
-
-            sensor_flag = random.randint(0,1)
-            pyrosim.Send_Cube(name=stringName, pos=[(randX/2),0.0,0.0] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
-            self.links.append(stringName)
-            if sensor_flag == 1:
-                self.sensor_links.append(stringName)
-
-            xPrev = randX
-            yPrev = randY
-            zPrev = randZ
-            curIndex +=1
-
-
-        for cube in range(self.numLinks-2):
-            randX = random.uniform(low_bound,high_bound)
-            randY = random.uniform(low_bound,high_bound)
-            randZ = random.uniform(low_bound,high_bound)
-
-            prevStringName = baseString + str(curIndex-1)
-            stringName = baseString + str(curIndex)
-            jointName = str(prevStringName) + "_" + stringName
-            motor_flag = random.randint(0,1)
-            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev,0.0,0.0], jointAxis = jointAxisString)
+            if curIndex == 1:
+                pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev/2,0.0,zPrev], jointAxis = jointAxisString)
+            else:
+                pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [xPrev,0.0,0.0], jointAxis = jointAxisString)
             self.joints.append(jointName)
             if motor_flag == 1:
                 self.motor_joints.append(jointName)
