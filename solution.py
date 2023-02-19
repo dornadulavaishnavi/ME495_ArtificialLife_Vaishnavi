@@ -134,7 +134,7 @@ class SOLUTION:
                     direction = random.randint(0,1)
                     sensor_flag = random.randint(0,1)
                     motor_flag = random.randint(0,1)
-                    joint_type = random.randint(0,3)
+                    joint_type = 0 #random.randint(0,3)
 
                     if extension == 0:
                         prevStringName = baseString + str(prev_vertIndex)
@@ -204,9 +204,10 @@ class SOLUTION:
             yPrev = prev_vertY
             zPrev = prev_vertZ
             prev_vertIndex = curIndex
+            starting_height = 0.0
             curIndex +=1
 
-            break
+            # break
 
         # for cube in range(self.numLinks-1):
         #     randX = random.uniform(low_bound,high_bound)
