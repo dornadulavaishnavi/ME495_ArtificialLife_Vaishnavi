@@ -115,11 +115,11 @@ class SOLUTION:
 
         curIndex += 1
 
-        high_bound_x = prev_vertX
-        high_bound_y = prev_vertY
-        high_bound_z = prev_vertZ
+        xPrev = prev_vertX
+        yPrev = prev_vertY
+        zPrev = prev_vertZ
 
-        self.num_leg_extentions = 4 #random.randint(0,4)
+        self.num_leg_extentions = random.randint(0,5)
         print("Number of extensions "+str(self.num_leg_extentions))
         base_direction = random.uniform(0,1)
         dir_y = 1
@@ -127,9 +127,9 @@ class SOLUTION:
         for side in range(2):
             dir_y = dir_y*-1
             for extension in range(self.num_leg_extentions):
-                randX = random.uniform(low_bound,high_bound_x)
-                randY = random.uniform(low_bound,high_bound_y)
-                randZ = random.uniform(low_bound,high_bound_z)
+                randX = random.uniform(low_bound,xPrev)
+                randY = random.uniform(low_bound,yPrev)
+                randZ = random.uniform(low_bound,zPrev)
 
                 direction = random.randint(0,1)
                 sensor_flag = random.randint(0,1)
@@ -140,7 +140,7 @@ class SOLUTION:
                     prevStringName = baseString + str(prev_vertIndex)
                     stringName = baseString + str(curIndex)
                     jointName = str(prevStringName) + "_" + stringName
-                    pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*high_bound_y/2,starting_height], jointAxis = jointAxisString)
+                    pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*prev_vertY/2,starting_height], jointAxis = jointAxisString)
                     pyrosim.Send_Cube(name=stringName, pos=[0.0,dir_y*randY/2,0.0] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
                     prev_dir = 0
                 else:
