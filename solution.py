@@ -101,9 +101,10 @@ class SOLUTION:
         randX = random.uniform(low_bound,high_bound)
         randY = random.uniform(low_bound,high_bound)
         randZ = random.uniform(low_bound,high_bound)
-        xPrev = randX
-        yPrev = randY
-        zPrev = randZ
+        prev_vertX = randX
+        prev_vertY = randY
+        prev_vertZ = randZ
+        prev_vertIndex = 0
 
         stringName = baseString + str(curIndex)
         sensor_flag = random.randint(0,1)
@@ -114,65 +115,70 @@ class SOLUTION:
 
         curIndex += 1
 
-        high_bound_x = xPrev
-        high_bound_y = yPrev
-        high_bound_z = zPrev
+        high_bound_x = prev_vertX
+        high_bound_y = prev_vertY
+        high_bound_z = prev_vertZ
 
         self.num_leg_extentions = 4 #random.randint(0,4)
+        print("Number of extensions "+str(self.num_leg_extentions))
         base_direction = random.uniform(0,1)
-        dir_y = -1
+        dir_y = 1
 
-        for extension in range(self.num_leg_extentions):
-            randX = random.uniform(low_bound,high_bound_x)
-            randY = random.uniform(low_bound,high_bound_y)
-            randZ = random.uniform(low_bound,high_bound_z)
+        for side in range(2):
+            dir_y = dir_y*-1
+            for extension in range(self.num_leg_extentions):
+                randX = random.uniform(low_bound,high_bound_x)
+                randY = random.uniform(low_bound,high_bound_y)
+                randZ = random.uniform(low_bound,high_bound_z)
 
-            direction = random.randint(0,1)
-            print("Number of extensions "+str(self.num_leg_extentions))
-            prevStringName = baseString + str(curIndex-1)
-            stringName = baseString + str(curIndex)
-            jointName = str(prevStringName) + "_" + stringName
-            sensor_flag = random.randint(0,1)
-            motor_flag = random.randint(0,1)
-            joint_type = random.randint(0,3)
+                direction = random.randint(0,1)
+                sensor_flag = random.randint(0,1)
+                motor_flag = random.randint(0,1)
+                joint_type = random.randint(0,3)
 
-            if extension == 0:
-                pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*yPrev/2,starting_height], jointAxis = jointAxisString)
-                pyrosim.Send_Cube(name=stringName, pos=[0.0,dir_y*randY/2,0.0] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
-                prev_dir = 0
-            else:
-                if direction == 0:
-                    # if extension == 0:
-                    #     pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [0.0,dir_y*yPrev/2,starting_height], jointAxis = jointAxisString)
-                    # else:
-                    if prev_dir == 0:
-                        pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*yPrev,0.0], jointAxis = jointAxisString)
-                    else:
-                        pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*yPrev/2,-zPrev/2], jointAxis = jointAxisString)
+                if extension == 0:
+                    prevStringName = baseString + str(prev_vertIndex)
+                    stringName = baseString + str(curIndex)
+                    jointName = str(prevStringName) + "_" + stringName
+                    pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*high_bound_y/2,starting_height], jointAxis = jointAxisString)
                     pyrosim.Send_Cube(name=stringName, pos=[0.0,dir_y*randY/2,0.0] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
                     prev_dir = 0
-                elif direction == 1:
-                #     # if extension == 0:
-                #     #     pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [0.0,0.0,starting_height-zPrev], jointAxis = jointAxisString)
-                #     # else:
-                    if prev_dir == 0:
-                        pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*yPrev/2,-zPrev/2], jointAxis = jointAxisString)
-                    else:
-                        pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,0.0,-zPrev], jointAxis = jointAxisString)
-                    pyrosim.Send_Cube(name=stringName, pos=[0.0,0.0,-randZ/2] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
-                    prev_dir = 1
-            
-            self.links.append(stringName)
-            self.joints.append(jointName)
-            if sensor_flag == 1:
-                self.sensor_links.append(stringName)
-            if motor_flag == 1:
-                self.motor_joints.append(jointName)
+                else:
+                    prevStringName = baseString + str(curIndex-1)
+                    stringName = baseString + str(curIndex)
+                    jointName = str(prevStringName) + "_" + stringName
+                    if direction == 0:
+                        # if extension == 0:
+                        #     pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [0.0,dir_y*yPrev/2,starting_height], jointAxis = jointAxisString)
+                        # else:
+                        if prev_dir == 0:
+                            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*yPrev,0.0], jointAxis = jointAxisString)
+                        else:
+                            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*yPrev/2,-zPrev/2], jointAxis = jointAxisString)
+                        pyrosim.Send_Cube(name=stringName, pos=[0.0,dir_y*randY/2,0.0] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
+                        prev_dir = 0
+                    elif direction == 1:
+                    #     # if extension == 0:
+                    #     #     pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [0.0,0.0,starting_height-zPrev], jointAxis = jointAxisString)
+                    #     # else:
+                        if prev_dir == 0:
+                            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*yPrev/2,-zPrev/2], jointAxis = jointAxisString)
+                        else:
+                            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,0.0,-zPrev], jointAxis = jointAxisString)
+                        pyrosim.Send_Cube(name=stringName, pos=[0.0,0.0,-randZ/2] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
+                        prev_dir = 1
+                
+                self.links.append(stringName)
+                self.joints.append(jointName)
+                if sensor_flag == 1:
+                    self.sensor_links.append(stringName)
+                if motor_flag == 1:
+                    self.motor_joints.append(jointName)
 
-            xPrev = randX
-            yPrev = randY
-            zPrev = randZ
-            curIndex +=1
+                xPrev = randX
+                yPrev = randY
+                zPrev = randZ
+                curIndex +=1
 
         # for cube in range(self.numLinks-1):
         #     randX = random.uniform(low_bound,high_bound)
