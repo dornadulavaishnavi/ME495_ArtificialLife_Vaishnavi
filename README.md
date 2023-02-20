@@ -42,14 +42,14 @@ The solution class constructor creates a random number between 1 and 6 (inclusiv
 ### Diagram of Joints and Links
 This diagram shows how the links and joints are related for a three 'vertebrae' snake in three dimensions and breifly explains the brain.
 
+![3d_block_relations](https://user-images.githubusercontent.com/90789243/220213684-99a7cfd8-1234-4b51-9384-c86d5c4bdbf7.png)
 
-### Embed Video 
+### Video 
 In this assignment, we generate bodies in three dimensions with a random number of links where each of these links are also a random shape. Then we assign sensors to random links as well and I assigned random joints to also have a motor. Line 137 of the solution.py file specifies that the joint type created for the motors will always be the 0th index of the joint_list variable. Changing the 0 to the commented line that's on the same line will randomize the type of joint generated between those two cubes. I changed this to 0 because it was difficult to tell if my robot had self collisions or if there was a prismatic joint, but users are welcome to change that back. The brain0.nndf file in the background of the videos shows the sensor and motor neurons randomly generated tied to each snake. This file gets deleted at the end of the run so it is only visible while the solution runs on the simulation.
 
-
+The 10 second sped up video is at: https://youtu.be/fhXsssr4iD4
 
 The real time video can be found at: https://youtu.be/IIpcKTCkEZM
-The 10 second sped up video is at: https://youtu.be/fhXsssr4iD4
 
 #### This project was created by following the Ludobots course on Reddit
 #### Assigned by Dr. Kriegman at Northwestern University
