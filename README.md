@@ -25,7 +25,7 @@
 - wheel (Optional for Windows Users)
 
 ### How to run the code
-- This assignment is hosted on the 'assignment6' branch of this repo.
+- This assignment is hosted on the 'assignment7' branch of this repo.
 - There are multiple ways to clone this project:
     1. To get the clone key, click on the green 'code' button in the upper right side of the repo. Then copy the html or ssh key given under the 'local' tab depending on your security preferences
     2. 'git clone ssh-or-html-key' will clone the whole repo and will automatically start in the main branch. To switch branches, use git switch or git checkout to move to the finalproject branch
