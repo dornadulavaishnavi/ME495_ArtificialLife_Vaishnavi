@@ -45,7 +45,7 @@ In this assignment, we generate snakes with a random number of links where each 
 
 https://user-images.githubusercontent.com/90789243/218629281-c395bda7-d7c6-4d87-a500-5577bfe3d8e0.mp4
 
-The real time video can be found at: https://youtu.be/W9ltSqaAxW0
+The real time video can be found at: https://youtu.be/IIpcKTCkEZM
 
 #### This project was created by following the Ludobots course on Reddit
 #### Assigned by Dr. Kriegman at Northwestern University
