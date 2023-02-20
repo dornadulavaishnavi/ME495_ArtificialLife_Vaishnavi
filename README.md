@@ -1,10 +1,10 @@
-# ME495 Artificial Life Assignment 6 Winter 2023
+# ME495 Artificial Life Assignment 7 Winter 2023
 
-## Generate Random Snake
+## Generate Random 3D Snake
 ## Author: Vaishnavi Dornadula
-## Last Editted: February 6th, 2023
+## Last Editted: February 20th, 2023
 
-### Relevant Files to Run Assignment 6 (Changed from Ludobots Final Project)
+### Relevant Files to Run Assignment 7 (Changed from Ludobots Final Project)
 1. pyrosim -> material_normal.py: contains rgb and opacity values to change the visual appearance of the normal (non sensor) blocks
 2. pyrosim -> material_sensor.py: contains rgb and opacity values to change the visual appearance of the sensor blocks
 3. body.urdf: the description file for the robot body
@@ -33,19 +33,24 @@
 
 - Once the repo is cloned, run 'python .\randomSnake.py'. Depending on your system and python installations, your 'python' may be 'python3' or 'py'.
 
-### How it Generates Random Snakes
-The solution class constructor creates a random number between 1 and 10 (inclusive) to determine the number of links the snake will contain. The class also contains a Generate_Body() function which is called in the Evaluate() function which will then generate that number of links sequentially with joints in between. The first block is the root block and every subsequent link is a child to the previous block, meaning that only the second joint and link are in absolute coordinates, the rest are relative. This can be confirmed by looking at the body.urdf file where each link is named "Cube" and then some number ID that is concatanated to it to create unique names. Each time a link is created, I generate a random number, 0 or 1, to determine if it will have a sensor and if so, the name is saved in a list. I do this again with each joint to determine which will have motors. These lists are then used in the Generate_Brain() function called in Evaluate() to assign the sensors, motors, and synapses. I also editted pyrosim's Send_Cube() function to take a parameter indicating if it is a sensor or not so I can change its material to reflect that.
+### How it Generates Random Snakes in Three Dimensions
+The solution class constructor creates a random number between 1 and 6 (inclusive) to determine the number of links the snake's vertebrae will contain. The code has similar logic to assignment 6 in which we generate a single dimention snake that extends in the x direction. The description for how that single chain snake is created is at the end of this section. In the Generate_Body() function, I set up a number of nested for loops that I incrementaly coded. First, I started with one vertebrae and added legs to one side in the y direction. I constrain the legs the randomly choose to be outwards or downwards and generate a random number of them between 0 and 5. This allows the spine block to have legs in the x and z directions. The for loop that generates these random legs from a given spine block first randomly generates the direction, then creates the joint at the correct position, accounting for if the previous block was outwards or downwards. These leg blocks are also constrained to be within the size of its related spine block to avoid self collisions with other blocks. Each leg block is placed relative to the previous but since the first leg block is connected to the root, its coordinates were absolute. This for loop is then repeated to generate a new random number of legs on the other side of the spine block. Once this was working with the randomly generated sensor and motor neurons in the same fashion as assignment 6, I had a robot with a single center body and random legs being generated in the x and z directions. Next I encapsulated that nested for loop into another to generate more vertebrae with legs, allowing the snake to grow in the y direction as well. This for loop created a new vertebrae block and made the random legs for either side for how many ever random links were created in the solution class constructor. The second link to the spine was specified in absolute coordinates since it was connected to the root but all others were relative to the vertebrae before. Each set of legs was linked to its vertebrae so that it would hopefully be able to move like a weird centipede. This meant there were a lot more variables to track from assignment 6 which is why the for loops are much longer. 
+
+How single chain snakes were constructed in Assignment 6:
+The solution class constructor creates a random number between 1 and 6 (inclusive) to determine the number of links the snake will contain. The class also contains a Generate_Body() function which is called in the Evaluate() function which will then generate that number of links sequentially with joints in between. The first block is the root block and every subsequent link is a child to the previous block, meaning that only the second joint and link are in absolute coordinates, the rest are relative. This can be confirmed by looking at the body.urdf file where each link is named "Cube" and then some number ID that is concatanated to it to create unique names. Each time a link is created, I generate a random number, 0 or 1, to determine if it will have a sensor and if so, the name is saved in a list. I do this again with each joint to determine which will have motors. These lists are then used in the Generate_Brain() function called in Evaluate() to assign the sensors, motors, and synapses. I also editted pyrosim's Send_Cube() function to take a parameter indicating if it is a sensor or not so I can change its material to reflect that.
 
 ### Diagram of Joints and Links
-This diagram shows how the links and joints are related for a four body snake for the x dimension. 
-![block_relations](https://user-images.githubusercontent.com/90789243/218628878-37fb11a3-b796-45ad-8a9a-24e243989fc5.png)
+This diagram shows how the links and joints are related for a four 'vertebrae' snake in three dimensions.
+
+This diagram shows how the sensors and motors are determined to make the brain of the robot.
 
 ### Embed Video 
-In this assignment, we generate snakes with a random number of links where each of these links are also a random shape. Then we assign sensors to random links as well and I assigned random joints to also have a motor. The brain0.nndf file in the background of the videos shows the sensor and motor neurons randomly generated tied to each snake.
+In this assignment, we generate bodies in three dimensions with a random number of links where each of these links are also a random shape. Then we assign sensors to random links as well and I assigned random joints to also have a motor. Line 137 of the solution.py file specifies that the joint type created for the motors will always be the 0th index of the joint_list variable. Changing the 0 to the commented line that's on the same line will randomize the type of joint generated between those two cubes. I changed this to 0 because it was difficult to tell if my robot had self collisions or if there was a prismatic joint, but users are welcome to change that back. The brain0.nndf file in the background of the videos shows the sensor and motor neurons randomly generated tied to each snake. This file gets deleted at the end of the run so it is only visible while the solution runs on the simulation.
 
-https://user-images.githubusercontent.com/90789243/218629281-c395bda7-d7c6-4d87-a500-5577bfe3d8e0.mp4
+
 
 The real time video can be found at: https://youtu.be/IIpcKTCkEZM
+The 10 second sped up video is at: https://youtu.be/fhXsssr4iD4
 
 #### This project was created by following the Ludobots course on Reddit
 #### Assigned by Dr. Kriegman at Northwestern University
