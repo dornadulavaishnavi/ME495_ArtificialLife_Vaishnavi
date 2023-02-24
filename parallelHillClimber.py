@@ -15,6 +15,10 @@ class PARALLEL_HILL_CLIMBER:
                 os.system("del fitness" + str(pop) + ".txt")
             except:
                 pass
+            try:
+                os.system("del body" + str(pop) + ".urdf")
+            except:
+                pass
 
         self.parents = {}
         self.nextAvailableID = 0
@@ -75,7 +79,7 @@ class PARALLEL_HILL_CLIMBER:
 
     def Evaluate(self, solutions):
         for solution in solutions:
-            solutions[solution].Start_Simulation("DIRECT")
+            solutions[solution].Start_Simulation("GUI")
 
         for solution in solutions:
             solutions[solution].Wait_For_Simulation_To_End()
