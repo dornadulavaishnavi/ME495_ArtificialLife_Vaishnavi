@@ -81,6 +81,8 @@ class SOLUTION:
         
         low_bound = 0.2
         high_bound = 1.5
+        vert_cube_bound = 1
+
         joint_list = ["revolute","spherical","prismatic","fixed"]
         starting_height = 3
 
@@ -91,9 +93,9 @@ class SOLUTION:
 
         curIndex = 0
         baseString = "Cube"
-        randX = random.uniform(low_bound,high_bound)
-        randY = random.uniform(low_bound,high_bound)
-        randZ = random.uniform(low_bound,high_bound)
+        randX = vert_cube_bound # random.uniform(low_bound,high_bound)
+        randY = vert_cube_bound # random.uniform(low_bound,high_bound)
+        randZ = vert_cube_bound # random.uniform(low_bound,high_bound)
         prev_vertX = randX
         prev_vertY = randY
         prev_vertZ = randZ
@@ -117,8 +119,11 @@ class SOLUTION:
         for cube in range(self.numLinks):
             for side in range(2):
                 dir_y = dir_y*-1
-                self.num_leg_extentions = random.randint(0,5)
-                print("Number of extensions "+str(self.num_leg_extentions))
+                self.num_leg_extentions = 5 # random.randint(0,5)
+                # print("Number of extensions "+str(self.num_leg_extentions))
+                xPrev = prev_vertX
+                yPrev = prev_vertY
+                zPrev = prev_vertZ
                 for extension in range(self.num_leg_extentions):
                     randX = random.uniform(low_bound,xPrev)
                     randY = random.uniform(low_bound,yPrev)
@@ -170,9 +175,9 @@ class SOLUTION:
                     zPrev = randZ
                     curIndex +=1
             
-            randX = random.uniform(low_bound,high_bound)
-            randY = random.uniform(low_bound,high_bound)
-            randZ = random.uniform(low_bound,high_bound)
+            randX = vert_cube_bound # random.uniform(low_bound,high_bound)
+            randY = vert_cube_bound # random.uniform(low_bound,high_bound)
+            randZ = vert_cube_bound # random.uniform(low_bound,high_bound)
 
             prevStringName = baseString + str(prev_vertIndex)
             stringName = baseString + str(curIndex)
