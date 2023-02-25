@@ -41,7 +41,7 @@ class PARALLEL_HILL_CLIMBER:
 
     def Evolve_For_One_Generation(self):
         self.Spawn()
-        self.Mutate()
+        # self.Mutate()
         # self.child.Evaluate("DIRECT")
         self.Evaluate(self.children)
         # exit()
@@ -75,6 +75,10 @@ class PARALLEL_HILL_CLIMBER:
                     self.parents[key] = self.children[gen]
 
     def Show_Best(self):
+        best_parent_key = 0
+        for parent in self.parents:
+            if self.parents[best_parent_key].fitness > self.parents[parent].fitness:
+                best_parent_key = parent
         self.parents[c.numberOfGenerations-1].Start_Simulation("GUI")
 
     def Evaluate(self, solutions):
