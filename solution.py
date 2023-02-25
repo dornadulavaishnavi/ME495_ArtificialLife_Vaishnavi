@@ -21,7 +21,7 @@ class SOLUTION:
         self.num_leg_extentions = 5 # random.randint(0,5)
         self.block_size = 1
         self.vert_cube_bound = self.block_size # random.uniform(0,self.block_size)
-        self.direction_array = [0,0,0,0,0]
+        self.direction_array = [random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)]
         # print(self.weight)
         # exit()
     
@@ -282,6 +282,8 @@ class SOLUTION:
     def Mutate(self):
         # self.weight[random.randint(0,(c.numSensorNeurons-1))][random.randint(0,(c.numMotorNeurons-1))] = random.random()*2-1
         self.vert_cube_bound = random.uniform(0,self.block_size)
+        # random_mutate = random.randint(0,(self.num_leg_extentions-1))
+        # self.direction_array[random_mutate] = ~self.direction_array[random_mutate]
 
     def Set_ID(self, newID):
         self.myID = newID

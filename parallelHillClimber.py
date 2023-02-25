@@ -41,7 +41,7 @@ class PARALLEL_HILL_CLIMBER:
 
     def Evolve_For_One_Generation(self):
         self.Spawn()
-        # self.Mutate()
+        self.Mutate()
         # self.child.Evaluate("DIRECT")
         self.Evaluate(self.children)
         # exit()
@@ -83,7 +83,7 @@ class PARALLEL_HILL_CLIMBER:
 
     def Evaluate(self, solutions):
         for solution in solutions:
-            solutions[solution].Start_Simulation("DIRECT")
+            solutions[solution].Start_Simulation("GUI")
 
         for solution in solutions:
             solutions[solution].Wait_For_Simulation_To_End()
