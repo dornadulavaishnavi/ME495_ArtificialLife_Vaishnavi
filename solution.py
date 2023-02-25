@@ -20,7 +20,8 @@ class SOLUTION:
         self.numLinks = 4 #random.randint(1,6)
         self.num_leg_extentions = 5 # random.randint(0,5)
         self.block_size = 1
-        self.vert_cube_bound = random.uniform(0,self.block_size)
+        self.vert_cube_bound = self.block_size # random.uniform(0,self.block_size)
+        self.direction_array = [0,0,0,0,0]
         # print(self.weight)
         # exit()
     
@@ -132,7 +133,7 @@ class SOLUTION:
                     randY = random.uniform(low_bound,yPrev)
                     randZ = random.uniform(low_bound,zPrev)
 
-                    direction = random.randint(0,1)
+                    direction = self.direction_array[extension] # random.randint(0,1)
                     sensor_flag = random.randint(0,1)
                     motor_flag = 1 # random.randint(0,1)
                     joint_type = 0 # random.randint(0,3)
@@ -279,7 +280,8 @@ class SOLUTION:
         # exit()
 
     def Mutate(self):
-        self.weight[random.randint(0,(c.numSensorNeurons-1))][random.randint(0,(c.numMotorNeurons-1))] = random.random()*2-1
+        # self.weight[random.randint(0,(c.numSensorNeurons-1))][random.randint(0,(c.numMotorNeurons-1))] = random.random()*2-1
+        self.vert_cube_bound = random.uniform(0,self.block_size)
 
     def Set_ID(self, newID):
         self.myID = newID
