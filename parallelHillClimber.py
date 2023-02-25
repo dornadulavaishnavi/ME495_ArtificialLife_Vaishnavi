@@ -72,7 +72,7 @@ class PARALLEL_HILL_CLIMBER:
         for key in self.parents:
             for gen in range(c.numberOfGenerations):
                 if (self.parents[key].fitness > self.children[gen].fitness):
-                    self.parents[key] = self.children[gen]
+                    self.parents[key] = copy.deepcopy(self.children[gen])
 
     def Show_Best(self):
         best_parent_key = 0
@@ -83,7 +83,7 @@ class PARALLEL_HILL_CLIMBER:
 
     def Evaluate(self, solutions):
         for solution in solutions:
-            solutions[solution].Start_Simulation("GUI")
+            solutions[solution].Start_Simulation("DIRECT")
 
         for solution in solutions:
             solutions[solution].Wait_For_Simulation_To_End()

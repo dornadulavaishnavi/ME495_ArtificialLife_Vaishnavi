@@ -15,8 +15,12 @@ class SOLUTION:
         #         self.weight[row][column] = np.random.rand()
 
         # print(self.weight)
+        random.seed = 0
         self.weight = self.weight*2-1
-        self.numLinks = random.randint(1,6)
+        self.numLinks = 4 #random.randint(1,6)
+        self.num_leg_extentions = 5 # random.randint(0,5)
+        self.block_size = 1
+        self.vert_cube_bound = random.uniform(0,self.block_size)
         # print(self.weight)
         # exit()
     
@@ -81,10 +85,10 @@ class SOLUTION:
         
         low_bound = 0.2
         high_bound = 1.5
-        vert_cube_bound = 1
+        
 
         joint_list = ["revolute","spherical","prismatic","fixed"]
-        starting_height = 3
+        starting_height = 2
 
         self.links = []
         self.joints = []
@@ -93,9 +97,9 @@ class SOLUTION:
 
         curIndex = 0
         baseString = "Cube"
-        randX = vert_cube_bound # random.uniform(low_bound,high_bound)
-        randY = vert_cube_bound # random.uniform(low_bound,high_bound)
-        randZ = vert_cube_bound # random.uniform(low_bound,high_bound)
+        randX = self.block_size # random.uniform(low_bound,high_bound)
+        randY = self.block_size # random.uniform(low_bound,high_bound)
+        randZ = self.block_size # random.uniform(low_bound,high_bound)
         prev_vertX = randX
         prev_vertY = randY
         prev_vertZ = randZ
@@ -110,16 +114,15 @@ class SOLUTION:
 
         curIndex += 1
 
-        xPrev = prev_vertX
-        yPrev = prev_vertY
-        zPrev = prev_vertZ
+        xPrev = self.vert_cube_bound
+        yPrev = self.vert_cube_bound
+        zPrev = self.vert_cube_bound
 
         
         dir_y = 1
         for cube in range(self.numLinks):
             for side in range(2):
                 dir_y = dir_y*-1
-                self.num_leg_extentions = 5 # random.randint(0,5)
                 # print("Number of extensions "+str(self.num_leg_extentions))
                 xPrev = prev_vertX
                 yPrev = prev_vertY
@@ -175,9 +178,9 @@ class SOLUTION:
                     zPrev = randZ
                     curIndex +=1
             
-            randX = vert_cube_bound # random.uniform(low_bound,high_bound)
-            randY = vert_cube_bound # random.uniform(low_bound,high_bound)
-            randZ = vert_cube_bound # random.uniform(low_bound,high_bound)
+            randX = self.block_size # random.uniform(low_bound,high_bound)
+            randY = self.block_size # random.uniform(low_bound,high_bound)
+            randZ = self.block_size # random.uniform(low_bound,high_bound)
 
             prevStringName = baseString + str(prev_vertIndex)
             stringName = baseString + str(curIndex)
@@ -201,9 +204,9 @@ class SOLUTION:
             prev_vertX = randX
             prev_vertY = randY
             prev_vertZ = randZ
-            xPrev = prev_vertX
-            yPrev = prev_vertY
-            zPrev = prev_vertZ
+            xPrev = self.vert_cube_bound
+            yPrev = self.vert_cube_bound
+            zPrev = self.vert_cube_bound
             prev_vertIndex = curIndex
             starting_height = 0.0
             curIndex +=1
@@ -233,7 +236,8 @@ class SOLUTION:
 
         for sensor in range(sensor_index):
             for motor in range(len(self.motor_joints)):
-                pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor+sensor_index-1 , weight = random.random()*2-1)
+                # pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor+sensor_index-1 , weight = random.random()*2-1)
+                pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor+sensor_index-1 , weight = 1)
 
         pyrosim.End()
         # exit()
