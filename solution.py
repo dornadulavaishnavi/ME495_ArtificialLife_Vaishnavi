@@ -15,10 +15,10 @@ class SOLUTION:
         #         self.weight[row][column] = np.random.rand()
 
         # print(self.weight)
-        random.seed = 0
+        random.seed = 1
         self.weight = self.weight*2-1
-        self.numLinks = 4 #random.randint(1,6)
-        self.num_leg_extentions = 5 # random.randint(0,5)
+        self.numLinks = 3 #random.randint(1,6)
+        self.num_leg_extentions = 4 # random.randint(0,5)
         self.block_size = 1
         self.vert_cube_bound = self.block_size # random.uniform(0,self.block_size)
         self.direction_array = [random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)]
@@ -33,7 +33,7 @@ class SOLUTION:
 
         fitnessFileName = "fitness" + str(self.myID) + ".txt"
         while not os.path.exists(fitnessFileName):
-            time.sleep(0.01)
+            time.sleep(0.05)
         f = open(fitnessFileName, "r")
         self.fitness = float(f.read())
         print(self.fitness)
@@ -89,7 +89,7 @@ class SOLUTION:
         
 
         joint_list = ["revolute","spherical","prismatic","fixed"]
-        starting_height = 2
+        starting_height = 4
 
         self.links = []
         self.joints = []
@@ -129,9 +129,9 @@ class SOLUTION:
                 yPrev = prev_vertY
                 zPrev = prev_vertZ
                 for extension in range(self.num_leg_extentions):
-                    randX = random.uniform(low_bound,xPrev)
-                    randY = random.uniform(low_bound,yPrev)
-                    randZ = random.uniform(low_bound,zPrev)
+                    randX = random.uniform(low_bound,self.vert_cube_bound)
+                    randY = random.uniform(low_bound,self.vert_cube_bound)
+                    randZ = random.uniform(low_bound,self.vert_cube_bound)
 
                     direction = self.direction_array[extension] # random.randint(0,1)
                     sensor_flag = random.randint(0,1)
@@ -179,38 +179,39 @@ class SOLUTION:
                     zPrev = randZ
                     curIndex +=1
             
-            randX = self.block_size # random.uniform(low_bound,high_bound)
-            randY = self.block_size # random.uniform(low_bound,high_bound)
-            randZ = self.block_size # random.uniform(low_bound,high_bound)
+            if cube < (self.numLinks-1):
+                randX = self.block_size # random.uniform(low_bound,high_bound)
+                randY = self.block_size # random.uniform(low_bound,high_bound)
+                randZ = self.block_size # random.uniform(low_bound,high_bound)
 
-            prevStringName = baseString + str(prev_vertIndex)
-            stringName = baseString + str(curIndex)
-            jointName = str(prevStringName) + "_" + stringName
-            motor_flag = random.randint(0,1)
-            if cube == 0:
-                # absolute version
-                pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [prev_vertX/2,0.0,starting_height], jointAxis = jointAxisString)
-            else:
-                pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [prev_vertX,0.0,0.0], jointAxis = jointAxisString)
-            self.joints.append(jointName)
-            if motor_flag == 1:
-                self.motor_joints.append(jointName)
+                prevStringName = baseString + str(prev_vertIndex)
+                stringName = baseString + str(curIndex)
+                jointName = str(prevStringName) + "_" + stringName
+                motor_flag = random.randint(0,1)
+                if cube == 0:
+                    # absolute version
+                    pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [prev_vertX/2,0.0,starting_height], jointAxis = jointAxisString)
+                else:
+                    pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = "revolute", position = [prev_vertX,0.0,0.0], jointAxis = jointAxisString)
+                self.joints.append(jointName)
+                if motor_flag == 1:
+                    self.motor_joints.append(jointName)
 
-            sensor_flag = random.randint(0,1)
-            pyrosim.Send_Cube(name=stringName, pos=[randX/2,0.0,0.0] , size=[randX,randY,randZ])
-            self.links.append(stringName)
-            if sensor_flag == 1:
-                self.sensor_links.append(stringName)
+                sensor_flag = random.randint(0,1)
+                pyrosim.Send_Cube(name=stringName, pos=[randX/2,0.0,0.0] , size=[randX,randY,randZ])
+                self.links.append(stringName)
+                if sensor_flag == 1:
+                    self.sensor_links.append(stringName)
 
-            prev_vertX = randX
-            prev_vertY = randY
-            prev_vertZ = randZ
-            xPrev = self.vert_cube_bound
-            yPrev = self.vert_cube_bound
-            zPrev = self.vert_cube_bound
-            prev_vertIndex = curIndex
-            starting_height = 0.0
-            curIndex +=1
+                prev_vertX = randX
+                prev_vertY = randY
+                prev_vertZ = randZ
+                xPrev = self.vert_cube_bound
+                yPrev = self.vert_cube_bound
+                zPrev = self.vert_cube_bound
+                prev_vertIndex = curIndex
+                starting_height = 0.0
+                curIndex +=1
 
             # break
 
