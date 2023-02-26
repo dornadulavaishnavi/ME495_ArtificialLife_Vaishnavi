@@ -26,6 +26,8 @@ class PARALLEL_HILL_CLIMBER:
             self.parents[pop] = SOLUTION(self.nextAvailableID)
             self.nextAvailableID += 1
 
+        fitness_file = "fitness_seed0.csv"
+        self.f = (open(fitness_file, "a"))
         # print(self.parents)
 
     def Evolve(self):
@@ -39,6 +41,7 @@ class PARALLEL_HILL_CLIMBER:
 
         for currentGeneration in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation()
+        self.f.close()
 
     def Evolve_For_One_Generation(self):
         self.Spawn()
@@ -74,6 +77,7 @@ class PARALLEL_HILL_CLIMBER:
             for gen in range(c.numberOfGenerations):
                 if (self.parents[key].fitness > self.children[gen].fitness):
                     self.parents[key] = copy.deepcopy(self.children[gen])
+        self.f.write(str(self.parents[key].fitness)+",")
 
     def Show_Best(self):
         best_parent_key = 0
