@@ -17,8 +17,8 @@ class SOLUTION:
         # print(self.weight)
         random.seed = 1
         self.weight = self.weight*2-1
-        self.numLinks = 3 #random.randint(1,6)
-        self.num_leg_extentions = 4 # random.randint(0,5)
+        self.numLinks = 4 #random.randint(1,6)
+        self.num_leg_extentions = 5 # random.randint(0,5)
         self.block_size = 1
         self.vert_cube_bound = self.block_size # random.uniform(0,self.block_size)
         self.direction_array = [random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)]
@@ -89,7 +89,7 @@ class SOLUTION:
         
 
         joint_list = ["revolute","spherical","prismatic","fixed"]
-        starting_height = 4
+        starting_height = 3
 
         self.links = []
         self.joints = []
@@ -129,9 +129,9 @@ class SOLUTION:
                 yPrev = prev_vertY
                 zPrev = prev_vertZ
                 for extension in range(self.num_leg_extentions):
-                    randX = random.uniform(low_bound,self.vert_cube_bound)
-                    randY = random.uniform(low_bound,self.vert_cube_bound)
-                    randZ = random.uniform(low_bound,self.vert_cube_bound)
+                    randX = self.vert_cube_bound/2 # random.uniform(low_bound,self.vert_cube_bound)
+                    randY = self.vert_cube_bound/2 # random.uniform(low_bound,self.vert_cube_bound)
+                    randZ = self.vert_cube_bound/2 # random.uniform(low_bound,self.vert_cube_bound)
 
                     direction = self.direction_array[extension] # random.randint(0,1)
                     sensor_flag = random.randint(0,1)
@@ -238,8 +238,8 @@ class SOLUTION:
 
         for sensor in range(sensor_index):
             for motor in range(len(self.motor_joints)):
-                # pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor+sensor_index-1 , weight = random.random()*2-1)
-                pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor+sensor_index-1 , weight = 1)
+                pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor+sensor_index-1 , weight = random.random()*2-1)
+                # pyrosim.Send_Synapse( sourceNeuronName = sensor , targetNeuronName = motor+sensor_index-1 , weight = 1)
 
         pyrosim.End()
         # exit()
@@ -282,7 +282,7 @@ class SOLUTION:
 
     def Mutate(self):
         # self.weight[random.randint(0,(c.numSensorNeurons-1))][random.randint(0,(c.numMotorNeurons-1))] = random.random()*2-1
-        self.vert_cube_bound = random.uniform(0,self.block_size)
+        self.vert_cube_bound = random.uniform(0,self.block_size/2)
         # random_mutate = random.randint(0,(self.num_leg_extentions-1))
         # self.direction_array[random_mutate] = ~self.direction_array[random_mutate]
 
