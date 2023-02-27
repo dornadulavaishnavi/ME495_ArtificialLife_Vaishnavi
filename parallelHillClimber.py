@@ -6,19 +6,19 @@ import constants as c
 class PARALLEL_HILL_CLIMBER: 
 
     def __init__(self):
-        for pop in range(c.populationSize*c.numberOfGenerations):
-            try:
-                os.system("del brain" + str(pop) + ".nndf")
-            except:
-                pass
-            try:
-                os.system("del fitness" + str(pop) + ".txt")
-            except:
-                pass
-            try:
-                os.system("del body" + str(pop) + ".urdf")
-            except:
-                pass
+        # for pop in range(c.populationSize*c.numberOfGenerations):
+            # try:
+            #     os.system("del brain" + str(pop) + ".nndf")
+            # except:
+            #     pass
+            # try:
+            #     os.system("del fitness" + str(pop) + ".txt")
+            # except:
+            #     pass
+            # try:
+            #     os.system("del body" + str(pop) + ".urdf")
+            # except:
+            #     pass
 
         self.parents = {}
         self.nextAvailableID = 0
@@ -26,7 +26,7 @@ class PARALLEL_HILL_CLIMBER:
             self.parents[pop] = SOLUTION(self.nextAvailableID)
             self.nextAvailableID += 1
 
-        fitness_file = "fitness_seed0.csv"
+        fitness_file = "fitness_seed2.csv"
         self.f = (open(fitness_file, "a"))
         # print(self.parents)
 
@@ -40,6 +40,7 @@ class PARALLEL_HILL_CLIMBER:
         self.Show_Best()
 
         for currentGeneration in range(c.numberOfGenerations):
+            print("Current Generation being Evaluated: "+str(currentGeneration))
             self.Evolve_For_One_Generation()
         self.f.close()
 
