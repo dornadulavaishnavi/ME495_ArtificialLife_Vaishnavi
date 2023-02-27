@@ -78,6 +78,7 @@ class PARALLEL_HILL_CLIMBER:
             if (self.parents[key].fitness > self.children[key].fitness):
                 self.parents[key] = copy.deepcopy(self.children[key])
             self.f.write(str(self.parents[key].fitness)+",")
+        self.f.write("\n")
 
     def Show_Best(self):
         best_parent_key = 0
@@ -86,7 +87,7 @@ class PARALLEL_HILL_CLIMBER:
                 best_parent_key = parent
         print("Best Parent Fitness")
         print(self.parents[best_parent_key].fitness)
-        self.parents[c.numberOfGenerations-1].Start_Simulation("GUI")
+        self.parents[best_parent_key].Start_Simulation("GUI")
 
     def Evaluate(self, solutions):
         for solution in solutions:
