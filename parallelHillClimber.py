@@ -74,10 +74,10 @@ class PARALLEL_HILL_CLIMBER:
         # print(self.child.fitness)
         # exit()
         for key in self.parents:
-            for gen in range(c.numberOfGenerations):
-                if (self.parents[key].fitness > self.children[gen].fitness):
-                    self.parents[key] = copy.deepcopy(self.children[gen])
-        self.f.write(str(self.parents[key].fitness)+",")
+            # for gen in range(c.numberOfGenerations):
+            if (self.parents[key].fitness > self.children[key].fitness):
+                self.parents[key] = copy.deepcopy(self.children[key])
+            self.f.write(str(self.parents[key].fitness)+",")
 
     def Show_Best(self):
         best_parent_key = 0
@@ -97,5 +97,5 @@ class PARALLEL_HILL_CLIMBER:
 
     def Print(self):
         for key in self.parents:
-            for gen in range(c.numberOfGenerations):
-                print("\n[" + str(self.parents[key].fitness) + ", " + str(self.children[gen].fitness) + "]\n")
+            # for gen in range(c.numberOfGenerations):
+                print("\n[" + str(self.parents[key].fitness) + ", " + str(self.children[key].fitness) + "]\n")
