@@ -129,9 +129,9 @@ class SOLUTION:
                 yPrev = prev_vertY
                 zPrev = prev_vertZ
                 for extension in range(self.num_leg_extentions):
-                    randX = 0.25 # self.vert_cube_bound[0] # random.uniform(low_bound,self.vert_cube_bound)
-                    randY = 0.5 # self.vert_cube_bound[1] # random.uniform(low_bound,self.vert_cube_bound)
-                    randZ = 0.8 # self.vert_cube_bound[2] # random.uniform(low_bound,self.vert_cube_bound)
+                    randX = self.vert_cube_bound[0] # random.uniform(low_bound,self.vert_cube_bound)
+                    randY = self.vert_cube_bound[1] # random.uniform(low_bound,self.vert_cube_bound)
+                    randZ = self.vert_cube_bound[2] # random.uniform(low_bound,self.vert_cube_bound)
 
                     direction = self.direction_array[extension] # random.randint(0,1)
                     sensor_flag = random.randint(0,1)
