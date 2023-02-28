@@ -43,8 +43,7 @@ The plots shown below show the fitness curves of 5 different runs, each with a d
 
 
 ### Diagram of Joints and Links
-This diagram shows how the links and joints are related for the four 'vertebrae' snake in three dimensions and breifly explains the brain.
-
+These diagrams show how the links and joints are related for the four 'vertebrae' snake in three dimensions and breifly explains the brain.
 
 ### Video 
 In this assignment, we generate bodies in three dimensions with a 4 links of a set size and set number of legs which are in random directions. The mutation will change the size of 1 dimension chosen at random to a new random number within a bound. Then we assign sensors to random links as well and I assigned all joints to also have a motor. Line 137 of the solution.py file specifies that the joint type created for the motors will always be the 0th index of the joint_list variable. Changing the 0 to the commented line that's on the same line will randomize the type of joint generated between those two cubes. I changed this to 0 because it was difficult to tell if my robot had self collisions or if there was a prismatic joint, but users are welcome to change that back. It was interesting to see the different ways the robot evolved, whether it be towards more effective gait or just taller legs that made it fall far in the desired direction.
