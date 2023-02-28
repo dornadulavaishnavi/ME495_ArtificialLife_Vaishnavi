@@ -15,7 +15,7 @@ class SOLUTION:
         #         self.weight[row][column] = np.random.rand()
 
         # print(self.weight)
-        random.seed = 2
+        random.seed = 5
         self.weight = self.weight*2-1
         self.numLinks = 4 #random.randint(1,6)
         self.num_leg_extentions = 5 # random.randint(0,5)

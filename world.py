@@ -6,4 +6,7 @@ class WORLD:
         # pass
 
         self.planeId = p.loadURDF("plane.urdf")
-        p.loadSDF("world.sdf")
+        try:
+            p.loadSDF("world.sdf")
+        except:
+            pass

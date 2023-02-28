@@ -26,7 +26,7 @@ class PARALLEL_HILL_CLIMBER:
             self.parents[pop] = SOLUTION(self.nextAvailableID)
             self.nextAvailableID += 1
 
-        fitness_file = "fitness_seed2.csv"
+        fitness_file = "fitness_seed5.csv"
         self.f = (open(fitness_file, "a"))
         # print(self.parents)
 
@@ -42,6 +42,7 @@ class PARALLEL_HILL_CLIMBER:
         for currentGeneration in range(c.numberOfGenerations):
             print("Current Generation being Evaluated: "+str(currentGeneration))
             self.Evolve_For_One_Generation()
+            self.Show_Best()
         self.f.close()
 
     def Evolve_For_One_Generation(self):
