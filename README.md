@@ -41,9 +41,24 @@ How random snakes were created in Assignment 7: The solution class constructor c
 ### Fitness Curves
 The plots shown below show the fitness curves of 5 different runs, each with a different random seed specified in the solution.py file's constructor. The best fitness in each generation is saved into a file called 'fitness_seed#.csv' where the number is the random seed that was set. The assignment asks us to do many more populations and generations than I was able to acheive here due to time constraints and my laptop overheating. I plan to solve this issue before the final project so I can run much larger generation and population sizes. The x axis shows the generation number and the y shows the fitness. Since I was trying to get the robot to move further in the negative x direction, the downward curve of the graphs shows how the fitness gets better in each generation. The multiple dots of different colors at each generation represent the best member of each population.
 
+![FitnessPlot](https://user-images.githubusercontent.com/90789243/221748107-7f79a98c-0a96-4250-9ac3-7eeaa70daa23.png)
+
+![Fitness_Seed1](https://user-images.githubusercontent.com/90789243/221748125-b6836c56-f115-4b34-b84f-4e524907a72a.png)
+
+![Fitness_Seed2](https://user-images.githubusercontent.com/90789243/221748136-574edd96-7f94-4fbf-9909-36fdb56deeb9.png)
+
+![Fitness_Seed3](https://user-images.githubusercontent.com/90789243/221748146-160b049f-3489-4446-ad10-83c1dc59ed89.png)
+
+![Fitness_Seed4](https://user-images.githubusercontent.com/90789243/221748164-fcc5c851-3450-4382-80c6-9e14c7c5e688.png)
+
+![Fitness_Seed5](https://user-images.githubusercontent.com/90789243/221748180-b069ad25-2524-4713-8257-c29e35d2c00c.png)
 
 ### Diagram of Joints and Links
 These diagrams show how the links and joints are related for the four 'vertebrae' snake in three dimensions and breifly explains the brain.
+
+![joints_bodied_exp](https://user-images.githubusercontent.com/90789243/221748046-18ad3dd0-dcb3-4af0-89ae-5399a071ca95.png)
+
+![body_exp](https://user-images.githubusercontent.com/90789243/221748086-8019081e-ac29-4742-b21a-cc5d4f329325.png)
 
 ### Video 
 In this assignment, we generate bodies in three dimensions with a 4 links of a set size and set number of legs which are in random directions. The mutation will change the size of 1 dimension chosen at random to a new random number within a bound. Then we assign sensors to random links as well and I assigned all joints to also have a motor. Line 137 of the solution.py file specifies that the joint type created for the motors will always be the 0th index of the joint_list variable. Changing the 0 to the commented line that's on the same line will randomize the type of joint generated between those two cubes. I changed this to 0 because it was difficult to tell if my robot had self collisions or if there was a prismatic joint, but users are welcome to change that back. It was interesting to see the different ways the robot evolved, whether it be towards more effective gait or just taller legs that made it fall far in the desired direction.
