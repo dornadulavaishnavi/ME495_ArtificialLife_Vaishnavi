@@ -11,7 +11,13 @@ class ROBOT:
         self.solutionID = solutionID
 
         self.robotId = p.loadURDF("body" + str(self.solutionID) + ".urdf")
-        self.nn = NEURAL_NETWORK("brain" + str(self.solutionID) + ".nndf")
+        file_success_flag = 0
+        while file_success_flag == 0:
+            try:
+                self.nn = NEURAL_NETWORK("brain" + str(self.solutionID) + ".nndf")
+                file_success_flag = 1
+            except:
+                pass
 
         pyrosim.Prepare_To_Simulate(self.robotId)
         

@@ -34,7 +34,13 @@ class SOLUTION:
         fitnessFileName = "fitness" + str(self.myID) + ".txt"
         while not os.path.exists(fitnessFileName):
             time.sleep(0.05)
-        f = open(fitnessFileName, "r")
+        file_success_flag = 0
+        while file_success_flag == 0:
+            try:
+                f = open(fitnessFileName, "r")
+                file_success_flag = 1
+            except:
+                pass
         self.fitness = float(f.read())
         print(self.fitness)
         f.close()
@@ -49,7 +55,13 @@ class SOLUTION:
         fitnessFileName = "fitness" + str(self.myID) + ".txt"
         while not os.path.exists(fitnessFileName):
             time.sleep(0.01)
-        f = open(fitnessFileName, "r")
+        file_success_flag = 0
+        while file_success_flag == 0:
+            try:
+                f = open(fitnessFileName, "r")
+                file_success_flag = 1
+            except:
+                pass
         self.fitness = float(f.read())
         # print(self.fitness)
         f.close()

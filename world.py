@@ -6,7 +6,10 @@ class WORLD:
         # pass
 
         self.planeId = p.loadURDF("plane.urdf")
-        try:
-            p.loadSDF("world.sdf")
-        except:
-            pass
+        file_success_flag = 0
+        while file_success_flag == 0:
+            try:
+                p.loadSDF("world.sdf")
+                file_success_flag = 1
+            except:
+                pass
