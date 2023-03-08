@@ -42,7 +42,7 @@ class PARALLEL_HILL_CLIMBER:
         for currentGeneration in range(c.numberOfGenerations):
             print("Current Generation being Evaluated: "+str(currentGeneration))
             self.Evolve_For_One_Generation()
-            self.Show_Best()
+            # self.Show_Best()
         self.f.close()
 
     def Evolve_For_One_Generation(self):
