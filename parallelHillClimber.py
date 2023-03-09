@@ -87,7 +87,7 @@ class PARALLEL_HILL_CLIMBER:
         for parent in self.parents:
             if self.parents[best_parent_key].fitness > self.parents[parent].fitness:
                 best_parent_key = parent
-        print("Best Parent Fitness")
+        print("Best Parent Fitness of ID: " + str(self.parents[best_parent_key].myID))
         print(self.parents[best_parent_key].fitness)
         # self.parents[best_parent_key].Start_Simulation("GUI")
         runString = "start /B python simulate.py GUI " + str(self.parents[best_parent_key].myID)
