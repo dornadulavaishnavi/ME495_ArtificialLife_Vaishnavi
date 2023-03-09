@@ -101,7 +101,7 @@ class SOLUTION:
         
 
         joint_list = ["revolute","spherical","prismatic","fixed"]
-        starting_height = 4
+        starting_height = 2
 
         self.links = []
         self.joints = []
@@ -157,7 +157,10 @@ class SOLUTION:
                         if cube == 0:
                             pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [0.0,dir_y*prev_vertY/2,starting_height], jointAxis = jointAxisString)
                         else:
-                            pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [-dir_y*prev_vertX/2,dir_y*prev_vertY/2,starting_height], jointAxis = jointAxisString)
+                            if dir_y == 1:
+                                pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [dir_y*prev_vertX/2,dir_y*prev_vertY/2,starting_height], jointAxis = jointAxisString)
+                            else:
+                                pyrosim.Send_Joint( name = jointName , parent= prevStringName , child = stringName , type = joint_list[joint_type], position = [-dir_y*prev_vertX/2,dir_y*prev_vertY/2,starting_height], jointAxis = jointAxisString)
                         pyrosim.Send_Cube(name=stringName, pos=[0.0,dir_y*randY/2,0.0] , size=[randX,randY,randZ],sensor_flag=sensor_flag)
                         prev_dir = 0
                     else:
@@ -218,9 +221,9 @@ class SOLUTION:
                 prev_vertX = randX
                 prev_vertY = randY
                 prev_vertZ = randZ
-                xPrev = self.vert_cube_bound[0]
-                yPrev = self.vert_cube_bound[1]
-                zPrev = self.vert_cube_bound[2]
+                # xPrev = self.vert_cube_bound[0]
+                # yPrev = self.vert_cube_bound[1]
+                # zPrev = self.vert_cube_bound[2]
                 prev_vertIndex = curIndex
                 starting_height = 0.0
                 curIndex +=1
