@@ -6,19 +6,19 @@ import constants as c
 class PARALLEL_HILL_CLIMBER: 
 
     def __init__(self):
-        # for pop in range(c.populationSize*c.numberOfGenerations):
-            # try:
-            #     os.system("del brain" + str(pop) + ".nndf")
-            # except:
-            #     pass
-            # try:
-            #     os.system("del fitness" + str(pop) + ".txt")
-            # except:
-            #     pass
-            # try:
-            #     os.system("del body" + str(pop) + ".urdf")
-            # except:
-            #     pass
+        for pop in range(c.populationSize*c.numberOfGenerations):
+            try:
+                os.system("del brain" + str(pop) + ".nndf")
+            except:
+                pass
+            try:
+                os.system("del fitness" + str(pop) + ".txt")
+            except:
+                pass
+            try:
+                os.system("del body" + str(pop) + ".urdf")
+            except:
+                pass
 
         self.parents = {}
         self.nextAvailableID = 0
@@ -89,7 +89,11 @@ class PARALLEL_HILL_CLIMBER:
                 best_parent_key = parent
         print("Best Parent Fitness")
         print(self.parents[best_parent_key].fitness)
-        self.parents[best_parent_key].Start_Simulation("GUI")
+        # self.parents[best_parent_key].Start_Simulation("GUI")
+        runString = "start /B python simulate.py GUI " + str(self.parents[best_parent_key].myID)
+        os.system(runString)
+        # body_file = "best_body_seed" + str() + ".csv"
+        # self.f = (open(fitness_file, "a"))
 
     def Evaluate(self, solutions):
         for solution in solutions:

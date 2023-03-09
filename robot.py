@@ -24,8 +24,8 @@ class ROBOT:
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
 
-        os.system("del brain" + str(self.solutionID) + ".nndf")
-        os.system("del body" + str(self.solutionID) + ".urdf")
+        # os.system("del brain" + str(self.solutionID) + ".nndf")
+        # os.system("del body" + str(self.solutionID) + ".urdf")
 
     def Prepare_To_Sense(self):
         self.sensors = {}
