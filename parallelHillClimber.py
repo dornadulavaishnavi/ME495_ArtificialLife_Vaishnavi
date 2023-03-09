@@ -92,7 +92,8 @@ class PARALLEL_HILL_CLIMBER:
         # self.parents[best_parent_key].Start_Simulation("GUI")
         runString = "start /B python simulate.py GUI " + str(self.parents[best_parent_key].myID)
         os.system(runString)
-        # body_file = "best_body_seed" + str() + ".csv"
+        # body_file = "best_body_seed" + str(self.parents[best_parent_key].seed) + ".csv"
+        # body_file = "brain" + str(self.parents[best_parent_key].myID) 
         # self.f = (open(fitness_file, "a"))
 
     def Evaluate(self, solutions):

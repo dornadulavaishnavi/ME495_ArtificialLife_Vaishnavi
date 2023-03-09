@@ -15,10 +15,11 @@ class SOLUTION:
         #         self.weight[row][column] = np.random.rand()
 
         # print(self.weight)
-        random.seed = 5
+        self.seed = 5
+        random.seed(self.seed)
         self.weight = self.weight*2-1
-        self.numLinks = 2 #random.randint(1,6)
-        self.num_leg_extentions = 5 # random.randint(0,5)
+        self.numLinks = random.randint(1,4) # 2
+        self.num_leg_extentions = random.randint(0,5) # 5
         self.block_size = 0.75
         self.vert_cube_bound = [self.block_size/4,self.block_size/4,self.block_size/4] # random.uniform(0,self.block_size)
         self.direction_array = [random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)]
