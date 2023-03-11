@@ -26,7 +26,7 @@ class PARALLEL_HILL_CLIMBER:
             self.parents[pop] = SOLUTION(self.nextAvailableID)
             self.nextAvailableID += 1
 
-        fitness_file = "fitness_seed9.csv"
+        fitness_file = "fitness_seed10.csv"
         self.f = (open(fitness_file, "a"))
         # print(self.parents)
 
