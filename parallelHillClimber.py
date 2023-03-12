@@ -6,6 +6,19 @@ import constants as c
 class PARALLEL_HILL_CLIMBER: 
 
     def __init__(self):
+        # self.Clear_Files()
+
+        self.parents = {}
+        self.nextAvailableID = 0
+        for pop in range(c.populationSize):
+            self.parents[pop] = SOLUTION(self.nextAvailableID)
+            self.nextAvailableID += 1
+
+        fitness_file = "fitness_seed5.csv"
+        self.f = (open(fitness_file, "a"))
+        # print(self.parents)
+
+    def Clear_Files(self):
         for pop in range(c.populationSize*c.numberOfGenerations):
             try:
                 os.system("del brain" + str(pop) + ".nndf")
@@ -19,16 +32,6 @@ class PARALLEL_HILL_CLIMBER:
                 os.system("del body" + str(pop) + ".urdf")
             except:
                 pass
-
-        self.parents = {}
-        self.nextAvailableID = 0
-        for pop in range(c.populationSize):
-            self.parents[pop] = SOLUTION(self.nextAvailableID)
-            self.nextAvailableID += 1
-
-        fitness_file = "fitness_seed10.csv"
-        self.f = (open(fitness_file, "a"))
-        # print(self.parents)
 
     def Evolve(self):
         # for parent in self.parents:
