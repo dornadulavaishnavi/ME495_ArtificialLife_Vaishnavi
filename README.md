@@ -1,4 +1,4 @@
-# ME495 Artificial Life Assignment 8 Winter 2023
+# ME495 Artificial Life Final Project Winter 2023
 
 ## Evolve 3D Snake
 ## Author: Vaishnavi Dornadula

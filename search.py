@@ -3,10 +3,11 @@ from hillclimber import HILL_CLIMBER
 from parallelHillClimber import PARALLEL_HILL_CLIMBER
 
 phc = PARALLEL_HILL_CLIMBER()
+# phc.Clear_Files()
 # phc.Evolve()
 # phc.Show_Best()
-phc.Clear_Files()
-# phc.Play_Specific(2986)
+
+# phc.Play_Specific(910)
 
 # for run in range(5):
 #     os.system("python generate.py")
