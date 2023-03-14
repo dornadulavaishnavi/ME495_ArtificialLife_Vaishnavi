@@ -85,7 +85,7 @@ In this final project, we generated bodies in three dimensions with a variable n
 
 The 10 second sped up gif is at:  
 
-The longer explaination video can be found at: 
+The longer explaination video can be found at: https://youtu.be/fbM3YKVCAYk
 
 #### This project is based on the Ludobots course on Reddit
 #### Assigned by Dr. Kriegman at Northwestern University
