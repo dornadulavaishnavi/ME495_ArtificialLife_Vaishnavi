@@ -8,7 +8,3 @@ phc = PARALLEL_HILL_CLIMBER()
 # phc.Show_Best()
 
 # phc.Play_Specific(910)
-
-# for run in range(5):
-#     os.system("python generate.py")
-#     os.system("python simulate.py")
