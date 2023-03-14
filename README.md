@@ -83,7 +83,8 @@ The plots shown below show the fitness curves of 10 different runs, each with a 
 ### Videos
 In this final project, we generated bodies in three dimensions with a variable number of vertebrae links of a set size and a variable number of leg links which are grown in random directions. The mutation will change the size of 1 dimension chosen at random to a new random number within a bound. Then we assign sensors to random links as well and I assigned all joints to also have a motor. Line 137 of the solution.py file specifies that the joint type created for the motors will always be the 0th index of the joint_list variable. Changing the 0 to the commented line that's on the same line will randomize the type of joint generated between those two cubes. I changed this to 0 because it was difficult to tell if my robot was exibiting strange behavior or if there was a prismatic joint, but users are welcome to change that back. It was interesting to see the different ways the robot evolved, some grew much longer and quickly shimmied its way forward and some grew taller and 'walked'. The random and evolved robots are highlighted in the gif below and a longer explaination with extra videos of other robots that emerged are shown in the second video. 
 
-The 10 second sped up gif is at:  
+The 10 second sped up gif:  
+![ME495_AL_10second_Vid - Made with Clipchamp](https://user-images.githubusercontent.com/90789243/224863332-ac875acc-efea-49e1-8f50-0f03684d7643.gif)
 
 The longer explaination video can be found at: https://youtu.be/fbM3YKVCAYk
 
